@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>login</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="./resources/css/login.css"/>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <!-- jQuery library -->
+        <script src="./resources/js/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="./resources/js/bootstrap.min.js"></script>
+        <style>
+            .form-color{
+                padding: 10px;
+                background-color: #E5E2D2;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <div>
+                <p>Database information: "jdbc:sqlserver://localhost:1433;databaseName=EJBData"</p>
+            </div>
+
+            <div class="login-form">
+                <div class="form-color">
+                    <f:view>
+                        <h:form>
+                            <h2 class="text-center">Log in</h2>
+                            <div class="form-group">
+                                <h:inputText id="userId" value="#{userManagedBean.user.userName}" title="UserId" class="form-control" required="true" requiredMessage="UserId is required."/>
+                            </div>
+                            <div class="form-group">
+                                <h:inputText id="userPassword" value="#{userManagedBean.user.userPassword}" title="UserPassword" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <h:commandButton action="#{userManagedBean.login()}" value="Login" class="btn btn-primary btn-block btn-login"/>
+                            </div>
+                            <div class="clearfix">
+                                <label class="pull-left checkbox-inline"><input type="checkbox"/> Remember me</label>
+                                <a href="#" class="pull-right">Forgot Password?</a>
+                            </div>
+                        </h:form>
+                    </f:view>
+                </div>
+                <p class="text-center"><a href="#">Create an Account</a></p>
+
+            </div>
+            
+        </div>
+    </h:body>
+</html>

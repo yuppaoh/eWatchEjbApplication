@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Login Page</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="resources/css_img/LoginRegister.css"/>
+    </h:head>
+    <h:body>
+        <section class="forms-section">
+            <h1 class="section-title">E-Watch Store</h1>
+            <div class="forms">
+                <div class="form-wrapper is-active">
+                    <button type="button" class="switcher switcher-login">
+                        Login
+                        <span class="underline"></span>
+                    </button>
+                    
+                    <h:form class="form form-login">
+                        <fieldset>
+                            <div class="input-block">
+                                <label>Username</label>
+                                <h:inputText id="userName" value="#{employeeManagedBean.employee.userName}" title="UserName" required="true" requiredMessage="UserName is required."/>
+                                <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                            </div>
+                            <div class="input-block">
+                                <label>Password</label>
+                                <!--<input type="password" name="UserPassWord" placeholder="Please enter password...." required="yes"/>-->
+                                <h:inputText id="password" value="#{employeeManagedBean.employee.userPassword}" title="UserPassword" />
+                            </div>
+                        </fieldset>
+                        <!--<button type="submit" class="btn-login">Login</button>-->
+                        <h:commandButton action="#{employeeManagedBean.login()}" value="Login" class="btn btn-login"/>
+                    </h:form>
+                </div>
+
+
+                <!--register-->
+                <div class="form-wrapper">
+                    <button type="button" class="switcher switcher-signup">
+                        Sign Up
+                        <span class="underline"></span>
+                    </button>
+                    <form class="form form-signup">
+                        <fieldset>
+                            <!--<legend>Please enter your username and your password.</legend>-->
+                            <div class="input-block">
+                                <label>Username</label>
+                                <input id="signup-username" type="text" name="usernameRegis"  placeholder="Please enter your username...."  required="yes"/>
+                            </div>
+                            <div class="input-block">
+                                <label>Password</label>
+                                <input id="signup-password" type="password"  name="passwordRegis"   placeholder="Please enter your password...."  required="yes"/>
+                            </div>
+
+                        </fieldset>
+                        <button type="submit" class="btn-signup">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            const switchers = [...document.querySelectorAll('.switcher')]
+            switchers.forEach(item => {
+                item.addEventListener('click', function () {
+                    switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+                    this.parentElement.classList.add('is-active')
+                })
+            })
+        </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
+    </h:body>
+</html>
+

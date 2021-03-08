@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Product page</title>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <script src="./resources/js/jquery.min.js"></script>
+        <script src="./resources/js/bootstrap.min.js"></script>
+        <!--slider-->
+        <script src="resources/js/jquery-1.11.0.min.js.download"></script>
+        <!--about-->
+        <link href="resources/css/style_ew.css" rel="stylesheet"/>
+        <link href="resources/css/style_ew1.css" rel="stylesheet"/>
+        <link href="resources/css/style_ew2.css" rel="stylesheet"/>
+        <style>
+            *{
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+            .product-maginbottom{
+                margin-bottom: 20px;
+            }
+        </style>
+        <style>
+            /*table.people td,*/
+            table.product th {
+                background: #99ccff;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <!--TOP MENU BAR-->
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="templates/header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <!--slider 3.4.1-->
+        <div class="container-fluid">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!--Indicators--> 
+                <ol class="carousel-indicators slider4">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!--Wrapper for slides--> 
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="vendors/img/product/bnr-1.jpg" alt=""/>
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="vendors/img/product/bnr-2.jpg" alt=""/>
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="vendors/img/product/bnr-3.jpg" alt=""/>
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <!--Controls--> 
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- slider 3.4.1 END-->
+
+        <!--about-starts-->
+        <div class="container-fluid"  style="padding-left: 0px; padding-right: 0px;">
+            <div class="about"> 
+
+                <div class="about-top grid-1">
+                    <div class="col-md-4 about-left">
+                        <figure class="effect-bubba">
+                            <img class="img-responsive" src="vendors/img/product/abt-1.jpg" alt=""/>
+                            <figcaption>
+                                <h2>Nulla maximus nunc</h2>
+                                <p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+                            </figcaption>			
+                        </figure>
+                    </div>
+                    <div class="col-md-4 about-left">
+                        <figure class="effect-bubba">
+                            <img class="img-responsive" src="vendors/img/product/abt-2.jpg" alt=""/>
+                            <figcaption>
+                                <h4>Mauris erat augue</h4>
+                                <p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+                            </figcaption>			
+                        </figure>
+                    </div>
+                    <div class="col-md-4 about-left">
+                        <figure class="effect-bubba">
+                            <img class="img-responsive" src="vendors/img/product/abt-3.jpg" alt=""/>
+                            <figcaption>
+                                <h4>Cras elit mauris</h4>
+                                <p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+                            </figcaption>			
+                        </figure>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--about-end-->
+
+
+        <!--Slider-Starts-Here-->
+        <script src="resources/js/responsiveslides.min.js.download"></script>
+        <script>
+// You can also use "$(window).load(function() {"
+            // $(functions () {
+// Slideshow 4
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+            // });
+        </script>
+        <!--End-slider-script-->
+
+        <!--        <div>
+                    <h3>
+                        <h:outputText value="welcome '$'{sessionScope.account} to E-Watch"/>
+                    </h3>
+                </div>-->
+
+        <!--        <f:view>
+                    <c:forEach items="{productManagedBean.findAll()}" var="row">
+                        <h:outputText value="{row.productImage}"/>
+                    </c:forEach>
+                </f:view>-->
+
+        <!--        <div class="container-fluid">
+                    <f:view>
+                        <div class=" container-fluid row">
+                            <c:forEach items="{productManagedBean.findAll()}" var="row">
+                                <h:outputText value="{row.productName}"/>
+                                <div class="col-md-3">
+                                    <img class="img-responsive zoom-img" src="vendors/img/product/{row.productImage}" alt=""/>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </f:view>
+                </div>-->
+
+        <div class="container-fluid">
+            <f:view>
+
+                <div class=" container-fluid row" style="padding-left: 0px; padding-right: 0px;">
+                    <c:forEach items="#{productManagedBean.findAll()}" var="row">
+                        <div class="col-md-3 product-left product-maginbottom">
+                            <div class="product-main simpleCart_shelfItem">
+                                <a href="product-detail.xhtml?productId=#{row.productId}" >link</a>
+
+                                <a href="product-detail.xhtml" class="mask btn">
+                                    <img class="img-responsive zoom-img" src="vendors/img/product/#{row.productImage}" alt=""/>
+                                </a>
+                                <div class="product-bottom">
+                                    <h3>#{row.productName}</h3>
+                                    <p>#{row.description}</p>
+                                    <h4>
+                                        <a class="item_add" href="#"><i></i></a>
+                                        <span class=" item_price">$ #{row.unitPrice}</span>
+                                    </h4>
+                                </div>
+                                <div class="srch">
+                                    <span>-50%</span>
+                                </div>
+                                <!--<form method="post" action="{productManagedBean.productDetail(row)}">-->
+                                    <!--<h:commandButton value="" action="{productManagedBean.productDetail(row)}">-->
+                                    <!--</h:commandButton>-->
+                                <!--</form>-->
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </f:view>
+        </div>
+
+    </h:body>
+</html>
+
