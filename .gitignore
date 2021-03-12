@@ -1,0 +1,7 @@
+/eWatchStore/dist/
+/eWatchStore/build/
+/eWatchStore/eWatchStore-ejb/build/
+/eWatchStore/eWatchStore-ejb/dist/
+/eWatchStore/eWatchStore-war/build/
+/eWatchStore/eWatchStore-war/dist/
+/mySqlEjb/

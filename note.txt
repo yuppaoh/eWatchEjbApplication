@@ -1,0 +1,12 @@
+E:\MyProgram\Aptech\Subject\47_ejbProject\srcOnGitHub\eWatchEjbApplication\eWatchStore\nbproject\build-impl.xml:639:
+Unable to delete file E:\MyProgram\Aptech\Subject\47_ejbProject\srcOnGitHub\eWatchEjbApplication\eWatchStore\dist\gfdeploy\eWatchStore\eWatchStore-war_war\WEB-INF\lib\jstl-impl.jar
+BUILD FAILED (total time: 1 second)
+
+639   <delete dir="${dist.dir}"/>
+
+//---------------------------------
+
+632    <ant antfile="${project.eWatchStore-war}/build.xml" inheritall="false" target="clean-ear">
+
+//---------------------------------
+1439   <delete dir="${build.dir}"/>

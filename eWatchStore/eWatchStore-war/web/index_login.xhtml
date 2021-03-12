@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login Page</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" type="text/css" href="resources/css_img/LoginRegister.css"/>
+    </h:head>
+    <h:body>
+        <section class="forms-section">
+            <h1 class="section-title">E-Watch Store</h1>
+            <div class="forms">
+                <div class="form-wrapper is-active">
+                    <button type="button" class="switcher switcher-login">
+                        Login
+                        <span class="underline"></span>
+                    </button>
+                    <h:form class="form form-login">
+                        <fieldset>
+                            <div class="input-block">
+                                <label>Username</label>                
+                                <h:inputText id="userName" value="#{employeeManagedBean.employee.userName}" a:placeholder="Please enter your username" required="true"/>
+                            </div>
+                            <div class="input-block">
+                                <label>Password</label>
+                                <h:inputSecret id="password" value="#{employeeManagedBean.employee.userPassword}"  a:placeholder="Please enter your password"  required="true"/>
+                            </div>
+                        </fieldset>
+                        <!--<h:commandButton value="h_login" action="{employeeManagedBean.login()}"/>-->
+                        <p:commandButton id="btnLogin" value="Login" action="#{employeeManagedBean.login()}" class="btn-login"/>
+                    </h:form>
+                </div>
+                
+                <!--register-->
+                <div class="form-wrapper">
+                    <button type="button" class="switcher switcher-signup">
+                        Sign Up
+                        <span class="underline"></span>
+                    </button>
+                    <h:form class="form form-signup">
+                        <fieldset>
+                            <div class="input-block">
+                                <label>Username</label>
+                                <h:inputText id="userNameRegis" value="#{employeeManagedBean.employee.userName}" a:placeholder="Please enter your username" required="true" />
+                            </div>
+                            <div class="input-block">
+                                <label>Password</label>
+                                <h:inputSecret id="passwordRegister" value="#{employeeManagedBean.employee.userPassword}" a:placeholder="Please enter your password" required="true"/>
+                            </div>
+                            <div class="input-block">
+                                <label>Confirm password</label>
+                                <h:inputSecret id="confPassword"  value="#{employeeManagedBean.confirmpass}" a:placeholder="Please enter your password again" required="true"/>
+                            </div>
+                        </fieldset>
+                        <p:commandButton id="btnRegis" value="Sign up" action="#{employeeManagedBean.regis()}" class="btn-signup"/>
+
+                    </h:form>
+                </div>
+            </div>
+        </section>
+        <script>
+            const switchers = [...document.querySelectorAll('.switcher')]
+            switchers.forEach(item => {
+                item.addEventListener('click', function () {
+                    switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+                    this.parentElement.classList.add('is-active')
+                })
+            })
+        </script>
+    </h:body>
+</html>
+

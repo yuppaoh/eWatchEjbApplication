@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Product page</title>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <script src="resources/js/jquery.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <!--slider-->
+        <script src="resources/js/jquery-1.11.0.min.js.download"></script>
+        <!--about-->
+        <link href="resources/css/style_ew.css" rel="stylesheet"/>
+        <link href="resources/css/style_ew1.css" rel="stylesheet"/>
+        <link href="resources/css/style_ew2.css" rel="stylesheet"/>
+        <style>
+            *{
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+            .product-maginbottom{
+                margin-bottom: 20px;
+            }
+        </style>
+        <style>
+            /*table.people td,*/
+            table.product th {
+                background: #99ccff;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        Product page
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{productManagedBean.findAll()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ProductId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.productId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ProductName"/>
+                        </f:facet>
+                        <h:outputText value="#{item.productName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ProductImage"/>
+                        </f:facet>
+                        <h:outputText value="#{item.productImage}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ProductType"/>
+                        </f:facet>
+                        <h:outputText value="#{item.productType}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="UnitPrice"/>
+                        </f:facet>
+                        <h:outputText value="#{item.unitPrice}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Quantity"/>
+                        </f:facet>
+                        <h:outputText value="#{item.quantity}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="BrandId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.brandId}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

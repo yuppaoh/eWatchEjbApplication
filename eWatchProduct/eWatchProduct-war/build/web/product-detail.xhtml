@@ -1,0 +1,485 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Product detail</title>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <script src="./resources/js/jquery.min.js"></script>
+        <script src="./resources/js/bootstrap.min.js"></script>
+
+        <link href="resources/css/product_detail_comment.css" rel="stylesheet" type="text/css"/>
+        <style>
+
+            div{
+                border: 1px solid red;
+            }
+
+            .product-detail{
+                text-align: center;
+            }
+
+            .box{
+                /*margin: 3px 0 3px 0;*/
+                /*position: absolute;*/
+                /*top: 50%;*/
+                /*left: 50%;*/
+                /*transform: translate(-50%, -50%);*/
+                direction: rtl;
+            }
+            .box a{
+                font-size: 40px;
+                color: #313131;
+                /*transition: 0.3s all;*/
+            }
+            /*            .box a:hover{
+                            color: #f1c40f;
+                        }*/
+            .b1 ~ a{
+                color: #f1c40f;
+            }
+
+            /*            .b2:hover ~ a{
+                            color: #f1c40f;
+                        }
+                        .b3:hover ~ a{
+                            color: #f1c40f;
+                        }
+                        .b4:hover ~ a{
+                            color: #f1c40f;
+                        }
+                        .b5:hover ~ a{
+                            color: #f1c40f;
+                        }*/
+
+
+        </style>
+        <style>
+            @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="templates/header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 product-detail">
+                    <div class="row">
+                        <center>
+                            <f:view>
+                                <h3>Product name: #{productManagedBean.p.productName}</h3>
+                                image:
+                                <div>
+                                    <img class="img-responsive zoom-img" src="vendors/img/product/#{productManagedBean.p.productImage}" alt=""/>
+                                </div>
+                            </f:view>
+                        </center>
+                    </div>
+                    <div class="row">
+                        <div class="box">
+                            <a class="ion-android-star b1"></a>
+                            <a class="ion-android-star b2"></a>
+                            <a class="ion-android-star b3"></a>
+                            <a class="ion-android-star b4"></a>
+                            <a class="ion-android-star b5"></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-primary">Add to Cart</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-success">Buy now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <f:view>
+                        <h:form>
+                            <h1><h:outputText value="List"/></h1>
+                            <h:dataTable value="#{productManagedBean.findAll()}" var="item" >
+
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="BrandId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.brandId.brandName}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </f:view>
+
+                </div>
+            </div>
+            <div class="row">
+                <p>SAN PHAM TUONG TU</p> <BR/>
+
+
+                <!--about-starts-->
+                <div class="container-fluid">
+                    <!--style="padding-left: 0px; padding-right: 0px;"-->
+                    <div class="about"> 
+
+                        <div class="about-top grid-1">
+                            <div class="col-md-4 about-left">
+                                <figure class="effect-bubba">
+                                    <img class="img-responsive" src="vendors/img/product/abt-1.jpg" alt=""/>
+                                    <figcaption>
+                                        <h2>Nulla maximus nunc</h2>
+                                        <p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+                                    </figcaption>			
+                                </figure>
+                            </div>
+                            <div class="col-md-4 about-left">
+                                <figure class="effect-bubba">
+                                    <img class="img-responsive" src="vendors/img/product/abt-2.jpg" alt=""/>
+                                    <figcaption>
+                                        <h4>Mauris erat augue</h4>
+                                        <p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+                                    </figcaption>			
+                                </figure>
+                            </div>
+                            <div class="col-md-4 about-left">
+                                <figure class="effect-bubba">
+                                    <img class="img-responsive" src="vendors/img/product/abt-3.jpg" alt=""/>
+                                    <figcaption>
+                                        <h4>Cras elit mauris</h4>
+                                        <p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+                                    </figcaption>			
+                                </figure>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--about-end-->
+            </div>
+            <hr/>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="l-pd-comment">
+                        <div class="g-container">
+                            <input hidden="" id="id-page-comment" readonly="" value="851829"/>
+                            <div class="card st-card card-normal">
+                                <h2 class="card-title card-title--badge">Hỏi &amp; Đáp về Samsung Galaxy Z Flip<span class="badge text-white" style="background: rgb(220, 53, 69);">191</span></h2>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="c-user-rate-form f-comment-0"><textarea name="" id="f-comment-0" rows="4" placeholder="Viết câu hỏi của bạn"></textarea><button class="btn btn-primary" data-id="0">Gửi câu hỏi</button></div>
+                                            <p class="f-err" style="display: none;">Mời bạn viết bình luận.(Tối thiểu 3 ký tự)</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal modal-comment js-modal" id="js-modal-cmt" data-animation="on">
+                                        <div class="modal__content" id="modal-cmt" role="alertdialog" tabindex="-1" aria-labelledby="modalTitle1" aria-describedby="modalDescription1">
+                                            <header class="modal__header" style="z-index: unset;">
+                                                <h3 id="name-modal">Hoàn thành gửi nhận xét</h3>
+                                            </header>
+                                            <div class="modal__body">
+                                                <p class="pmd-ln1" id="note-form" hidden="">Vui lòng nhập thông tin để hoàn thành gửi nhận xét</p>
+                                                <form>
+                                                    <div class="form-group">
+                                                        <p class="pmd-lb">Tên:<sup>*</sup></p>
+                                                        <input type="text" class="form-control" name="txtNameRating" id="txtNameRating" aria-describedby="emailHelp" placeholder="Nhập họ và tên" value=""/>
+                                                        <p class="f-err" style="display: none;">Tên không được để trống</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p class="pmd-ln2">Để nhận thông báo khi có trả lời. Hãy nhập email và số điện thoại (Không bắt buộc)</p>
+                                                        <p class="pmd-lb">Email:</p>
+                                                        <input type="text" class="form-control" name="txtEmailRating" id="txtEmailRating" placeholder="Nhập email" value=""/>
+                                                        <p class="f-err" style="display: none;">Nhập đúng định dạng email</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p class="pmd-lb">Số điện thoại:</p>
+                                                        <input type="text" class="form-control" name="txtPhoneRating" id="txtPhoneRating" placeholder="Nhập số điện thoại" value=""/>
+                                                        <p class="f-err" style="display: none;">Số điện thoại không hợp lệ</p>
+                                                    </div><button type="submit" class="btn btn-primary js-modal__close">Gửi nhận xét</button>
+                                                </form>
+                                            </div>
+                                            <button class="reset modal__close-btn js-modal__close" style="cursor: pointer;"><svg class="icon" viewBox="0 0 16 16"><title>Close modal window</title><g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line><line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line></g></svg></button></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="c-comment " id="f-comment-root">
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">T</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Thanh
+                                                        <div class="time">1 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4743605">Còn hàng và khuyến mãi k shop</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">TQH</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trần Quốc Hoàn<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">1 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4743731">
+                                                        <p>Chào Thanh,<br/> Dạ khuyến mại vẫn đang diễn ra và máy đang sẵn hàng bạn nha.&nbsp;Bạn quan tâm có thể để lại SĐT liên hệ tại đây hoặc gọi tới tổng đài miễn phí 18006601, FPTShop sẽ hỗ trợ bạn
+                                                            mua hàng nhanh nhất ạ.<br/> Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">PH</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">pham ha
+                                                        <div class="time">2 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4742181">cho shop. cho minh tu van ve em z flip ne. thong thuong may gap thi cap se de bi hu. the em dien thoai nay the nao a. neu mua dut mot lan thi co nhung chuong trinh khuyen mai gi. va price 20.990.000đ
+                                                        la gi km den khi nao a.</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">TQH</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trần Quốc Hoàn<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">2 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4742200">
+                                                        <p>Chào Ha,<br/> Dạ&nbsp;Samsung Galaxy Z Flip dòng siêu phẩm cao cấp của hãng bạn yên tâm về độ bền bạn nha. Máy đang có KM&nbsp;Giảm ngay 15.000.000đ áp dụng đến hết tháng 3 còn&nbsp;20.990.000đ<br/>                                                                Bạn quan tâm có thể để lại SĐT liên hệ tại đây hoặc gọi tới tổng đài miễn phí 18006601, FPTShop sẽ hỗ trợ bạn mua hàng nhanh nhất ạ.<br/> Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">T</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trinh
+                                                        <div class="time">4 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4739152">Mình còn khuyến mãi ko ạ</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">TQH</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trần Quốc Hoàn<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">4 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4739166">
+                                                        <p>Chào Trinh,<br/> Dạ còn bạn nha.<br/> Bạn quan tâm có thể để lại SĐT liên hệ tại đây hoặc gọi tới tổng đài miễn phí 18006601, FPTShop sẽ hỗ trợ bạn mua hàng nhanh nhất ạ.<br/> Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">D</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Đạt
+                                                        <div class="time">4 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4738675">Bên mình có nạp ví momo k v</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">LTT</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Lê Thanh Toàn<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">4 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4738682">
+                                                        <p>Chào Đạt,<br/> Dạ FPT shop có hỗ trợ nạp tiền vào ví momo bạn nhé.<br/> Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">D</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Dung
+                                                        <div class="time">7 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4733690">Ở hà nội có màu tím không shop ơi</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">TQH</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trần Quốc Hoàn<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">7 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4733720">
+                                                        <p>Chào Dung,<br/> Dạ sẵn hàng bạn nha.&nbsp;Bạn quan tâm có thể để lại SĐT liên hệ tại đây hoặc gọi tới tổng đài miễn phí 18006601, FPTShop sẽ hỗ trợ bạn mua hàng nhanh nhất ạ.<br/> Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">LQ</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">lệ quyên
+                                                        <div class="time">8 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4732056">note 5 có áp dụng thu cũ k vậy shop?</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">GVT</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Giáp Văn Thao<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">8 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4732059">
+                                                        <p>Chào Quyên,<br/> Dạ sản phẩm&nbsp;&nbsp;<a href="https://fptshop.com.vn/dien-thoai/samsung-galaxy-note-5" target="_blank">Samsung Galaxy Note 5</a>&nbsp;có được hỗ trợ tham gia chương trình thu
+                                                            cũ đổi mới bạn nhé.&nbsp;Để được hỗ trợ chi tiết bạn vui lòng để lại tên và số điện thoại hoặc liên hệ tổng đài miễn phí 18006601 để được tư vấn hỗ trợ mua hàng nhanh nhất&nbsp;bạn nhé.<br/>                                                                QTV thông tin đến bạn!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">LQ</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">lệ quyên
+                                                        <div class="time">8 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4732071">chương trình giảm giá Samsung Galaxy Z Flip này áp dụng đến khi nào vậy shop?</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">NTN</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Nguyễn Thiện Nhật Quyền<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">8 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4732090">
+                                                        <p>Dạ ưu đãi giảm giá dự kiến áp dụng đến hết tháng 3 hoặc có thể kết thúc sớm nếu có thay đổi bạn nha, bạn nên tranh thủ mua máy sớm để kịp khuyến mãi ạ. Thông tin đến bạn!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">TNT</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trần Ngoc Thắng
+                                                        <div class="time">9 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4730399">note10+ có áp dụng thu cũ không ạ ( note10+ không mua ở FPTshop)</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">TNH</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trần Ngọc Huấn<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">9 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4730403">
+                                                        <p>Chào Thắng,</p>
+                                                        <p>Dạ bạn có thể mang sản phẩm đến cửa hàng để nhân viên kiểm tra và thẩm định giá thu cũ đổi mới cho bạn ạ.</p>
+                                                        <p>Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">L</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Lam
+                                                        <div class="time">9 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4729457">Tiếc là không 5G</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">NTN</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Nguyễn Thiện Nhật Quyền<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">9 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4729463">
+                                                        <p>Chào Lam,<br/> Dạ sản phẩm hiện không hỗ trợ 5G ạ. Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">PH</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Phan Hân
+                                                        <div class="time">11 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4727493">Cho mình hỏi là trả góp là trả trước bao nhiêu và bao nhiêu 1 tháng ạ</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">GVT</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Giáp Văn Thao<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">11 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4727506">
+                                                        <p>Chào Hân,<br/> Dạ sản phẩm có hỗ trợ trả góp 0% lãi suất như sau ạ:&nbsp;<br/> - Số tiền trả trước:&nbsp;10.500.000₫&nbsp;(50%)<br/> - Số tiền trả mỗi tháng:&nbsp;886.000₫ (12 Tháng)<br/> - Nhà tài
+                                                            chính: Home Credit<br/> - Giấy tờ trả góp:&nbsp;CMND+Hộ Khẩu/Bằng lái xe<br/> Thông tin trả góp trên chỉ mang tính tham khảo. Để được hỗ trợ chi tiết bạn vui lòng để lại tên và số điện
+                                                            thoại hoặc liên hệ tổng đài miễn phí 18006601 để được tư vấn hỗ trợ mua hàng nhanh nhất&nbsp;bạn nhé.<br/> QTV thông tin đến bạn!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">T</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Trân
+                                                        <div class="time">11 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4727382">Cho mik hỏi thu cũ đổi mới có áp dụng cho trả góp 0%k v? Máy samsung s10 có thu lại k</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Trả lời</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">NTN</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Nguyễn Thiện Nhật Quyền<span class="badge badge-primary">Quản trị viên</span>
+                                                        <div class="time">11 ngày trước</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4727393">
+                                                        <p>Chào Trân,<br/> Dạ chương trình thu cũ đổi mới có áp dụng với trả góp 0% lãi suất ạ, Samsung S10 có hỗ trợ thu đổi nếu thỏa điều kiện chương trình bạn nhé,mời bạn mang máy đến cửa hàng để nhân
+                                                            viên kiểm tra và định giá chính xác ạ. Thân mến!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <div class="c-comment-pagination margin-bottom-10 commentdetail">
+                                                <ul class="pagination text-center">
+                                                    <li class="pagination-item"><a class="pagination-link active" style="cursor: pointer;">1</a></li>
+                                                    <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">2</a></li>
+                                                    <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">3</a></li>
+                                                    <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">4</a></li>
+                                                    <li class="pagination-item to-top" title="Tiến 1 trang"><a class="pagination-link" aria-label="Next" style="cursor: pointer;"><i class="demo-icon icon-angle-right"></i></a></li>
+                                                    <li title="Đến trang cuối cùng" class="pagination-item to-top"><a class="pagination-link" aria-label="Next" style="cursor: pointer;"><i class="demo-icon icon-angle-double-right"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="" style="display: inline-block;"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </h:body>
+</html>
+
