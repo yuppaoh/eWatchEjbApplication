@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Product detail</title>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <script src="./resources/js/jquery.min.js"></script>
+        <script src="./resources/js/bootstrap.min.js"></script>
+
+        <link href="resources/css/product_detail_comment.css" rel="stylesheet" type="text/css"/>
+
+        <!--<script src="resources/js/jquery-1.11.0.min.js.download"></script>-->
+        <link href="resources/css/style_ew.css" rel="stylesheet"/>
+        <link href="resources/css/style_ew1.css" rel="stylesheet"/>
+        <link href="resources/css/style_ew2.css" rel="stylesheet"/>
+
+        <style>
+            /*for coding*/
+            /*            div{
+                            border: 1px solid red;
+                        }
+            
+                        .product-detail{
+                            text-align: center;
+                        }*/
+            /*---------*/
+
+            /*            .product-detail{
+                            padding-bottom: 20px;
+                            border: 1px solid #C4C3C3;
+                        }*/
+
+            .rating{
+                /*margin: 3px 0 3px 0;*/
+                /*position: absolute;*/
+                /*top: 50%;*/
+                /*left: 50%;*/
+                /*transform: translate(-50%, -50%);*/
+                direction: rtl;
+            }
+            .rating a{
+                font-size: 35px;
+                color: #313131;
+                /*transition: 0.3s all;*/
+            }
+            /*            .box a:hover{
+                            color: #f1c40f;
+                        }*/
+            .b1 ~ a{
+                color: #f1c40f;
+            }
+
+            /*            .b2:hover ~ a{
+                            color: #f1c40f;
+                        }
+                        .b3:hover ~ a{
+                            color: #f1c40f;
+                        }
+                        .b4:hover ~ a{
+                            color: #f1c40f;
+                        }
+                        .b5:hover ~ a{
+                            color: #f1c40f;
+                        }*/
+
+
+        </style>
+        <style>
+            @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
+        </style>
+    </h:head>
+    <h:body class="hbody">
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="templates/header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="row">
+                    <!--view picture and rating-->
+                    <div class="col-md-5 product-detail">
+                        <div class="row">
+                            <center>
+                                <f:view>
+                                    <h3></h3>
+                                    <div>
+                                        <img class="img-responsive zoom-img" src="vendors/img/product/#{productManagedBean.product.productImage}" alt=""/>
+                                    </div>
+                                </f:view>
+                            </center>
+                        </div>
+                        <div class="row" style="padding: 5px 0px 10px 0px;">
+                            <style>
+                                .ratio{
+                                    padding: 0px;
+                                    margin: 0px;
+                                    height: 52px;
+                                    font-size: 23px;
+                                    line-height: 52px;
+                                    text-align: right;
+                                }
+                            </style>
+                            <div class="col-md-5 ratio">
+                                Rating:
+                            </div>
+                            <div class="col-md-7" style="text-align: left;">
+                                <div class="rating">
+                                    <a class="ion-android-star b1"></a>
+                                    <a class="ion-android-star b2"></a>
+                                    <a class="ion-android-star b3"></a>
+                                    <a class="ion-android-star b4"></a>
+                                    <a class="ion-android-star b5"></a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-block btn-primary btn-lg">Add to Cart</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-block btn-success btn-lg">Buy now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--view product feature-->
+                    <div class="col-md-7">
+                        <h3>#{productManagedBean.product.productName}</h3>
+                        <hr/>
+                        <h4>Price: <span style="color: red;">$ #{productManagedBean.product.unitPrice}</span></h4>
+                        <hr/>
+                        <h4>Type of product: #{productManagedBean.product.productType}</h4>
+                        <hr/>
+                        <h4>Available number: #{productManagedBean.product.quantity} products</h4>
+                        <hr/>
+                        <h5><b>PRODUCT DESCRIPTION</b></h5>
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat</p>
+
+
+                    </div>
+                </div>
+            </div><br/>
+            <div class="container-fluid">
+                <div class="row">
+                    <h2 style="margin-left: 15px;">Similar product</h2> <BR/>
+                    <div class="container-fluid">
+                        <f:view>
+                            <div class=" container-fluid row" style="padding-left: 0px; padding-right: 0px;">
+                                <c:forEach items="#{productManagedBean.findAll()}" var="item">
+                                    <div class="col-md-3 product-left product-maginbottom">
+                                        <div class="product-main simpleCart_shelfItem">
+                                            <center>
+                                                <h:form>
+                                                    <h:commandLink action="#{productManagedBean.productDetail(item)}" value="">
+                                                        <img class="img-responsive zoom-img" src="vendors/img/product/#{item.productImage}" alt=""/>
+                                                    </h:commandLink>
+                                                </h:form>
+                                            </center>
+                                            <div class="product-bottom">
+                                                <h3>#{item.productName}</h3>
+                                                <p>#{item.description}</p>
+                                                <h4>
+                                                    <a class="item_add" href="#"><i></i></a>
+                                                    <span class=" item_price">$ #{item.unitPrice}</span>
+                                                </h4>
+                                            </div>
+                                            <!--                                            <div class="srch">
+                                                                                            <span>-50%</span>
+                                                                                        </div>-->
+
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </f:view>
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+
+            <!--Comment-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="l-pd-comment">
+                        <div class="g-container">
+                            <input hidden="" id="id-page-comment" readonly="" value="851829"/>
+                            <div class="card st-card card-normal">
+                                <h2 class="card-title card-title--badge" style="font-size: 35px; color: blue;">
+                                    Comment on this product
+                                    <span class="badge text-white" style="background: rgb(220, 53, 69);">2</span>
+                                </h2>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="c-user-rate-form f-comment-0"><textarea name="" id="f-comment-0" rows="4" placeholder="Input your comment here"></textarea><button class="btn btn-primary" data-id="0">Send</button></div>
+                                            <p class="f-err" style="display: none;">Input your comment.(Minium 3 characters)</p>
+                                        </div>
+                                    </div>
+
+                                    <!--one comment-->
+                                    <div class="modal modal-comment js-modal" id="js-modal-cmt" data-animation="on">
+                                        <div class="modal__content" id="modal-cmt" role="alertdialog" tabindex="-1" aria-labelledby="modalTitle1" aria-describedby="modalDescription1">
+                                            <header class="modal__header" style="z-index: unset;">
+                                                <h3 id="name-modal">Hoàn thành gửi nhận xét</h3>
+                                            </header>
+                                            <div class="modal__body">
+                                                <p class="pmd-ln1" id="note-form" hidden="">Vui lòng nhập thông tin để hoàn thành gửi nhận xét</p>
+                                                <form>
+                                                    <div class="form-group">
+                                                        <p class="pmd-lb">Tên:<sup>*</sup></p>
+                                                        <input type="text" class="form-control" name="txtNameRating" id="txtNameRating" aria-describedby="emailHelp" placeholder="Nhập họ và tên" value=""/>
+                                                        <p class="f-err" style="display: none;">Tên không được để trống</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p class="pmd-ln2">Để nhận thông báo khi có trả lời. Hãy nhập email và số điện thoại (Không bắt buộc)</p>
+                                                        <p class="pmd-lb">Email:</p>
+                                                        <input type="text" class="form-control" name="txtEmailRating" id="txtEmailRating" placeholder="Nhập email" value=""/>
+                                                        <p class="f-err" style="display: none;">Nhập đúng định dạng email</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p class="pmd-lb">Số điện thoại:</p>
+                                                        <input type="text" class="form-control" name="txtPhoneRating" id="txtPhoneRating" placeholder="Nhập số điện thoại" value=""/>
+                                                        <p class="f-err" style="display: none;">Số điện thoại không hợp lệ</p>
+                                                    </div><button type="submit" class="btn btn-primary js-modal__close">Gửi nhận xét</button>
+                                                </form>
+                                            </div>
+                                            <button class="reset modal__close-btn js-modal__close" style="cursor: pointer;"><svg class="icon" viewBox="0 0 16 16"><title>Close modal window</title><g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line><line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line></g></svg></button></div>
+                                    </div>
+
+                                    <!--Data in table comment-->
+                                    <div class="row">
+                                        <div class="c-comment " id="f-comment-root">
+
+                                            <!--Client comment-->
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">T</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Quy
+                                                        <div class="time">1 day before</div>
+                                                    </div>
+
+                                                    <!--Noi dung trong column on table comment-->
+                                                    <div class="c-comment-text" data-idcmt="4743605">Where are you brand of shop in Vietnam?</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Reply</a></div>
+                                                </div>
+                                            </div>
+
+                                            <!--Shop reply-->
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">A</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
+                                                        <div class="time">1 day before</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4743731">
+
+                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+
+                                            <!--Client comment-->
+                                            <div class="c-comment-box">
+                                                <div class="c-comment-box__avatar">M</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Minh
+                                                        <div class="time">2 day before</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4732056">is this watch for Kids?</div>
+                                                    <div class="c-comment-status"><a style="cursor: pointer;">Reply</a></div>
+                                                </div>
+                                            </div>
+
+                                            <!--Shop reply 1-->
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">A</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
+                                                        <div class="time">1 day before</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4743731">
+
+                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <!--Shop reply 2-->
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">A</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
+                                                        <div class="time">1 day before</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4743731">
+
+                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+                                            <!--Shop reply 3-->
+                                            <div class="c-comment-box level2">
+                                                <div class="c-comment-box__avatar">A</div>
+                                                <div class="c-comment-box__content">
+                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
+                                                        <div class="time">1 day before</div>
+                                                    </div>
+                                                    <div class="c-comment-text" data-idcmt="4743731">
+
+                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
+                                                    </div>
+                                                    <div class="c-comment-status"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="c-comment-pagination margin-bottom-10 commentdetail" style="text-align: center;">
+                                                <ul class="pagination text-center">
+                                                    <!--                                                    <li class="pagination-item"><a class="pagination-link active" style="cursor: pointer;">1</a></li>
+                                                                                                        <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">2</a></li>
+                                                                                                        <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">3</a></li>
+                                                                                                        <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">4</a></li>-->
+                                                    <!--                                                    <li class="pagination-item to-top" title="Tiến 1 trang"><a class="pagination-link" aria-label="Next" style="cursor: pointer;"><i class="demo-icon icon-angle-right"></i></a></li>
+                                                                                                        <li title="Đến trang cuối cùng" class="pagination-item to-top"><a class="pagination-link" aria-label="Next" style="cursor: pointer;"><i class="demo-icon icon-angle-double-right"></i></a></li>-->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="" style="display: inline-block;"></span>
+                </div>
+            </div>
+        </div>
+        
+        <!--Footer-->
+         <div class="container-fluid">
+            <ui:insert name="footer">
+                <ui:include src="templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+    </h:body>
+</html>
+
