@@ -30,7 +30,7 @@ public class CustomersFacade extends AbstractFacade<Customers> implements Custom
     public CustomersFacade() {
         super(Customers.class);
     }
-
+    
     @Override
     public boolean checkCustomer(Customers customer) {
         System.out.println("in checkCustomer");

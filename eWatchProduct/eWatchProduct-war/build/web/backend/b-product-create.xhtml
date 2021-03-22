@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        b-product-create
+        
+        <f:view>
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="ProductId:" for="productId" />
+                    <h:inputText id="productId" value="#{productManagedBean.product.productId}" title="ProductId" required="true" requiredMessage="The ProductId field is required."/>
+                    <h:outputLabel value="ProductName:" for="productName" />
+                    <h:inputText id="productName" value="#{productManagedBean.product.productName}" title="ProductName" />
+                    <h:outputLabel value="ProductImage:" for="productImage" />
+                    <h:inputText id="productImage" value="#{productManagedBean.product.productImage}" title="ProductImage" />
+                    <h:outputLabel value="ProductType:" for="productType" />
+                    <h:inputText id="productType" value="#{productManagedBean.product.productType}" title="ProductType" />
+                    <h:outputLabel value="UnitPrice:" for="unitPrice" />
+                    <h:inputText id="unitPrice" value="#{productManagedBean.product.unitPrice}" title="UnitPrice" />
+                    <h:outputLabel value="Quantity:" for="quantity" />
+                    <h:inputText id="quantity" value="#{productManagedBean.product.quantity}" title="Quantity" />
+                    <h:outputLabel value="Description:" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{productManagedBean.product.description}" title="Description" />
+                    <h:outputLabel value="BrandId:" for="brandId" />
+                    <h:selectOneMenu id="brandId" value="#{productManagedBean.brand.brandId}" title="BrandId" required="true" requiredMessage="The BrandId field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems 
+                            value="#{brandManagedBean.findAll()}" 
+                                            var="b" 
+                                            itemLabel="#{b.brandName}" itemValue="#{b.brandId}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Insert" action="#{productManagedBean.create()}"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

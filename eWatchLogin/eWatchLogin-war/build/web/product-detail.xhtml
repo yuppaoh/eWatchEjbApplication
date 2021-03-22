@@ -19,21 +19,6 @@
         <link href="resources/css/style_ew2.css" rel="stylesheet"/>
 
         <style>
-            /*for coding*/
-            /*            div{
-                            border: 1px solid red;
-                        }
-            
-                        .product-detail{
-                            text-align: center;
-                        }*/
-            /*---------*/
-
-            /*            .product-detail{
-                            padding-bottom: 20px;
-                            border: 1px solid #C4C3C3;
-                        }*/
-
             .rating{
                 /*margin: 3px 0 3px 0;*/
                 /*position: absolute;*/
@@ -43,30 +28,21 @@
                 direction: rtl;
             }
             .rating a{
-                font-size: 35px;
+                font-size: 25px;
                 color: #313131;
                 /*transition: 0.3s all;*/
             }
-            /*            .box a:hover{
-                            color: #f1c40f;
-                        }*/
+
             .b1 ~ a{
                 color: #f1c40f;
             }
-
-            /*            .b2:hover ~ a{
-                            color: #f1c40f;
-                        }
-                        .b3:hover ~ a{
-                            color: #f1c40f;
-                        }
-                        .b4:hover ~ a{
-                            color: #f1c40f;
-                        }
-                        .b5:hover ~ a{
-                            color: #f1c40f;
-                        }*/
-
+            .a:hover{
+                text-decoration: none;
+            }
+            
+            .product-margin-bottom{
+                margin-bottom: 20px;
+            }
 
         </style>
         <style>
@@ -96,36 +72,29 @@
                             </center>
                         </div>
                         <div class="row" style="padding: 5px 0px 10px 0px;">
-                            <style>
-                                .ratio{
-                                    padding: 0px;
-                                    margin: 0px;
-                                    height: 52px;
-                                    font-size: 23px;
-                                    line-height: 52px;
-                                    text-align: right;
-                                }
-                            </style>
-                            <div class="col-md-5 ratio">
-                                Rating:
-                            </div>
-                            <div class="col-md-7" style="text-align: left;">
+                            <div class="col-md-12" style="text-align: center;">
                                 <div class="rating">
                                     <a class="ion-android-star b1"></a>
                                     <a class="ion-android-star b2"></a>
                                     <a class="ion-android-star b3"></a>
                                     <a class="ion-android-star b4"></a>
                                     <a class="ion-android-star b5"></a>
+                                    <a class="a" style="color: black; font-size: 20px;">Rating</a>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-block btn-primary btn-lg">Add to Cart</button>
+                            <div class="col-md-6" style="margin-top: 5px; margin-bottom: 2px;">
+                                <h:form>
+                                    <h:commandButton class="btn btn-block btn-primary btn-lg" value="Add to Cart" action="#{productManagedBean.addCart()}"/>
+                                </h:form>
+                                <!--<button class="btn btn-block btn-primary btn-lg">Add to Cart</button>-->
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-block btn-success btn-lg">Buy now</button>
+                            <div class="col-md-6" style="margin-top: 5px; margin-bottom: 2px;">
+<!--                                <h:form>
+                                    <h:commandButton class="btn btn-block btn-success btn-lg" value="Buy now" action="{productManagedBean.orderProduct()}"/>
+                                </h:form>-->
+                                <a href="product-order.xhtml" class="btn btn-block btn-success btn-lg">Buy now</a>
                             </div>
                         </div>
                     </div>
@@ -147,14 +116,83 @@
                     </div>
                 </div>
             </div><br/>
+<!--form for test-->
+<hr/>
+<h3>Test erea</h3>
+<div class="row" style="background-color: gray;">
+    <div class="col-md-4">
+        <h:form>
+            <h3><h:outputText value="Create/Edit"/></h3>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="CustomerId:" for="customerId" />
+                <h:selectOneMenu id="customerId" value="#{orderManagedBean.customer.customerId}" title="CustomerId" >
+                    <f:selectItems value="#{customerManagedBean.findAll()}" 
+                                   var="c" itemLabel="#{c.customerName}" itemValue="#{c.customerId}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Save" action="#{productManagedBean.orderProduct()}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+    <div class="col-md-8">
+        <h:form>
+            <h1><h:outputText value="List"/></h1>
+            <h:dataTable value="#{orderManagedBean.findAll()}" var="item">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="OrderId"/>
+                    </f:facet>
+                    <h:outputText value="#{item.orderId}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="OrderDate"/>
+                    </f:facet>
+                    <h:outputText value="#{item.orderDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="OrderStatus"/>
+                    </f:facet>
+                    <h:outputText value="#{item.orderStatus}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="DeliveryDate"/>
+                    </f:facet>
+                    <h:outputText value="#{item.deliveryDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Description"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="CustomerId"/>
+                    </f:facet>
+                    <h:outputText value="#{item.customerId.customerId}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
+    </div>
+</div>
+<hr/>
+<!--form for test END-->
+
             <div class="container-fluid">
                 <div class="row">
                     <h2 style="margin-left: 15px;">Similar product</h2> <BR/>
                     <div class="container-fluid">
                         <f:view>
                             <div class=" container-fluid row" style="padding-left: 0px; padding-right: 0px;">
-                                <c:forEach items="#{productManagedBean.findAll()}" var="item">
-                                    <div class="col-md-3 product-left product-maginbottom">
+                                <c:forEach items="#{productManagedBean.findByType(productManagedBean.product.productType)}" var="item">
+                                    <div class="col-md-3 product-left product-margin-bottom">
                                         <div class="product-main simpleCart_shelfItem">
                                             <center>
                                                 <h:form>
@@ -193,7 +231,7 @@
                         <div class="g-container">
                             <input hidden="" id="id-page-comment" readonly="" value="851829"/>
                             <div class="card st-card card-normal">
-                                <h2 class="card-title card-title--badge" style="font-size: 35px; color: blue;">
+                                <h2 class="card-title card-title--badge" style="font-size: 30px;">
                                     Comment on this product
                                     <span class="badge text-white" style="background: rgb(220, 53, 69);">2</span>
                                 </h2>
@@ -343,9 +381,9 @@
                 </div>
             </div>
         </div>
-        
+
         <!--Footer-->
-         <div class="container-fluid">
+        <div class="container-fluid">
             <ui:insert name="footer">
                 <ui:include src="templates/footer.xhtml" />
             </ui:insert>

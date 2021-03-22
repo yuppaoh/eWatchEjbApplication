@@ -11,11 +11,9 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
@@ -158,6 +156,11 @@ public class CustomerManagedBean implements Serializable {
         System.out.println("page: " + page);
 
         return page;
+    }
+    
+// backend
+    public List<Customers> findAll(){
+        return this.customersFacade.findAll();
     }
 
 }

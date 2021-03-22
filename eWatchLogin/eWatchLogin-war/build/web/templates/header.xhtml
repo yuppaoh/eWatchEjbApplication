@@ -11,6 +11,7 @@
         <!--        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
                 <script src="resources/js/jquery.min.js"></script>
                 <script src="resources/js/bootstrap.min.js"></script>-->
+
     </h:head>
     <h:body>
         <ui:composition>
@@ -22,7 +23,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>                        
                         </button>
-                        <a class="navbar-brand" href="#">WebSiteName</a>
+                        <a class="navbar-brand" href="#">e-Watch</a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
@@ -53,6 +54,12 @@
                                 </li>
                             </c:if>
                             <c:if test="#{sessionScope.customerId != null}">
+                                <li>
+                                    <a href="#">
+                                        <img src="vendors/img/logos/cart-1.png" alt=""/>
+                                        <span class="badge text-white"  style="background: rgb(220, 53, 69); margin-top: -20px;">#{cartManagedBean.findByCustomerId().size()}</span>
+                                    </a>
+                                </li>
                                 <li><a href="#">
                                         <span class="glyphicon glyphicon-user"></span>
                                         <!--{sessionScope.customerId}-->

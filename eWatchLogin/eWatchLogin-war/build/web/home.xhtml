@@ -24,7 +24,7 @@
                 margin-bottom: 0px;
 
             }
-            .product-maginbottom{
+            .product-margin-bottom{
                 margin-bottom: 20px;
             }
         </style>
@@ -35,10 +35,10 @@
                 <ui:include src="templates/header.xhtml" />
             </ui:insert>
         </div>
-
+        <!--<div style="height: 80px;"></div>-->
 
         <!--slider 3.4.1-->
-        <div class="container-fluid">
+        <div class="container-fluid" >
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!--Indicators--> 
                 <ol class="carousel-indicators slider4">
@@ -152,7 +152,7 @@
                     <c:forEach items="#{productManagedBean.findAll()}" var="item">
                         <h:form>
                             <h:commandLink action="#{productManagedBean.productDetail(item)}" value="">
-                                <div class="col-md-3 product-left product-maginbottom">
+                                <div class="col-md-3 product-left product-margin-bottom">
                                     <div class="product-main simpleCart_shelfItem">
                                         <!--<h:form>-->
                                         <!--<h:commandLink action="{productManagedBean.productDetail(item)}" value="">-->
@@ -170,8 +170,6 @@
                                         <div class="srch">
                                             <span>-50%</span>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </h:commandLink>
@@ -191,4 +189,3 @@
 
     </h:body>
 </html>
-

@@ -90,7 +90,7 @@
                                 <f:view>
                                     <h3></h3>
                                     <div>
-                                        <img class="img-responsive zoom-img" src="vendors/img/product/#{productManagedBean.p.productImage}" alt=""/>
+                                        <img class="img-responsive zoom-img" src="vendors/img/product/#{productManagedBean.product.productImage}" alt=""/>
                                     </div>
                                 </f:view>
                             </center>
@@ -132,13 +132,13 @@
 
                     <!--view product feature-->
                     <div class="col-md-7">
-                        <h3>#{productManagedBean.p.productName}</h3>
+                        <h3>#{productManagedBean.product.productName}</h3>
                         <hr/>
-                        <h4>Price: <span style="color: red;">$ #{productManagedBean.p.unitPrice}</span></h4>
+                        <h4>Price: <span style="color: red;">$ #{productManagedBean.product.unitPrice}</span></h4>
                         <hr/>
-                        <h4>Type of product: #{productManagedBean.p.productType}</h4>
+                        <h4>Type of product: #{productManagedBean.product.productType}</h4>
                         <hr/>
-                        <h4>Available number: #{productManagedBean.p.quantity} products</h4>
+                        <h4>Available number: #{productManagedBean.product.quantity} products</h4>
                         <hr/>
                         <h5><b>PRODUCT DESCRIPTION</b></h5>
                         <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat</p>

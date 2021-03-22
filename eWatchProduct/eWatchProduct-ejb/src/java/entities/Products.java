@@ -72,6 +72,17 @@ public class Products implements Serializable {
     public Products(Integer productId) {
         this.productId = productId;
     }
+    
+    // input this constructor
+    public Products(Integer productId, String productName, String productImage,String productType, Float unitPrice, Integer quantity, String description) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productImage = productImage;
+        this.productType = productType;
+        this.unitPrice = unitPrice;
+        this.quantity = quantity;
+        this.description = description;
+    }
 
     public Integer getProductId() {
         return productId;

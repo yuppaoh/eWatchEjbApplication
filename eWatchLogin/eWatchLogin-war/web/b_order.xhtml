@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>order product</title>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <script src="./resources/js/jquery.min.js"></script>
+        <script src="./resources/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="OrderId:" for="orderId" />
+                    <h:inputText id="orderId" value="#{orderManagedBean.order.orderId}" title="OrderId" required="true" requiredMessage="The OrderId field is required."/>
+                    <h:outputLabel value="OrderDate:" for="orderDate" />
+                    <h:inputText id="orderDate" value="#{orderManagedBean.order.orderDate}" title="OrderDate" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="OrderStatus:" for="orderStatus" />
+                    <h:inputText id="orderStatus" value="#{orderManagedBean.order.orderStatus}" title="OrderStatus" />
+                    <h:outputLabel value="DeliveryDate:" for="deliveryDate" />
+                    <h:inputText id="deliveryDate" value="#{orderManagedBean.order.deliveryDate}" title="DeliveryDate" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Description:" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{orderManagedBean.order.description}" title="Description" />
+                    <h:outputLabel value="CustomerId:" for="customerId" />
+                    <h:selectOneMenu id="customerId" value="#{orderManagedBean.customer.customerId}" title="CustomerId" >
+                        <f:selectItems value="#{customerManagedBean.findAll()}"
+                                       var="c"
+                                       itemLabel="#{c.customerName}" itemValue="#{c.customerId}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton class="btn btn-block btn-primary btn-lg" value="Insert" action="#{orderManagedBean.create()}"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+        <hr/>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{orderManagedBean.findAll()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="OrderId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.orderId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="OrderDate"/>
+                        </f:facet>
+                        <h:outputText value="#{item.orderDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="OrderStatus"/>
+                        </f:facet>
+                        <h:outputText value="#{item.orderStatus}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DeliveryDate"/>
+                        </f:facet>
+                        <h:outputText value="#{item.deliveryDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="CustomerId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.customerId}"/>
+                    </h:column>
+                    <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Action"/>
+                            </f:facet>
+                            <h:commandButton value="Edit" action="#{orderManagedBean.edit(item)}"/>
+                            <h:commandButton value="Delete" action="#{orderManagedBean.delete(item)}"/>
+                        </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

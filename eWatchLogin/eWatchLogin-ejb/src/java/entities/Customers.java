@@ -6,16 +6,19 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,6 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Customers.findByPhoneNo", query = "SELECT c FROM Customers c WHERE c.phoneNo = :phoneNo")
     , @NamedQuery(name = "Customers.findByCustomerStatus", query = "SELECT c FROM Customers c WHERE c.customerStatus = :customerStatus")})
 public class Customers implements Serializable {
+
+    @OneToMany(mappedBy = "customerId")
+    private List<Orders> ordersList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -145,6 +151,15 @@ public class Customers implements Serializable {
     @Override
     public String toString() {
         return "entities.Customers[ customerId=" + customerId + " ]";
+    }
+
+    @XmlTransient
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
     
 }

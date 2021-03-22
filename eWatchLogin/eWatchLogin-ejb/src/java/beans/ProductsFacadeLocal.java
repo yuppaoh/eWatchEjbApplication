@@ -30,4 +30,5 @@ public interface ProductsFacadeLocal {
 
     int count();
     
+    List<Products> findByType(String query);
 }
