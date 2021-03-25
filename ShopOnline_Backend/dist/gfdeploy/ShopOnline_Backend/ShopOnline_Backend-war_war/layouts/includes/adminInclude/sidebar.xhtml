@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+    </h:head>
+    <h:body>
+        <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+        -->
+        <ui:composition>
+            <div class="sidebar" data-color="orange"> 
+                <div class="logo">
+                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                        EW
+                    </a>
+                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                        E-Watch
+                    </a>
+                </div>
+                <div class="sidebar-wrapper ps" id="sidebar-wrapper">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <i class="now-ui-icons design_app"></i>
+                                <p>Orders</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="now-ui-icons users_single-02"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                        <li>
+                            <h:form>
+                                <h:commandLink action="http://localhost:8080/ShopOnline_Backend-war/faces/productList.xhtml">
+                                    <i class="now-ui-icons tech_watch-time"></i>
+                                    <p>Products</p>
+                                </h:commandLink>
+                                
+                            </h:form>
+                            
+                            
+                        </li>
+                    </ul>
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    </div>
+                    <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                    </div>
+                </div>
+            </div>
+        </ui:composition>
+    </h:body>
+</html>
+

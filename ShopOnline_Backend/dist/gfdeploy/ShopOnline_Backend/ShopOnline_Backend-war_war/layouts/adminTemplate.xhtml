@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+    </h:head>
+    <h:body>
+        <div class="wrapper">
+            <ui:include src="includes/adminInclude/sidebar.xhtml"  />
+            <div class="main-panel ps ps--active-y" id="main-panel">
+                <ui:include src="includes/adminInclude/header.xhtml" />
+                <div class="content">
+                    <ui:insert name="CustomerList" />   
+                    <ui:insert name="CustomerUpdate" />   
+                    <ui:insert name="CustomerCreate" />   
+                    
+                    <ui:insert name="EmployeeList" />   
+                    <ui:insert name="EmployeeUpdate" />   
+                    <ui:insert name="EmployeeCreate" />
+                    
+                    <ui:insert name="ProductList" />   
+                    <ui:insert name="ProductUpdate" />   
+                    <ui:insert name="ProductCreate" />
+                </div>
+                <ui:include src="includes/adminInclude/footer.xhtml" />  
+            </div>  
+        </div>
+    </h:body>
+</html>
+

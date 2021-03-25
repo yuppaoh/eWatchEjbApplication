@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Admin - Customer</title>
+        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="apple-touch-icon" sizes="76x76" href="resources/adminMainPageResource/img/apple-icon.png" />
+        <link rel="icon" type="image/png" href="resources/adminMainPageResource/img/favicon.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+        <link rel="stylesheet" type="text/css" href="resources/adminMainPageResource/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="resources/adminMainPageResource/css/now-ui-dashboard.css" />
+    </h:head>
+    <h:body>
+        <ui:decorate template="layouts/adminTemplate.xhtml">
+            <ui:define name="CustomerList">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                              <h4 class="card-title"> Customer Table</h4>
+                            </div>     
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <h:form>
+                                        <h:dataTable value="#{CustomerController.findAll()}" var="currentCustomer" class="table text-center">
+                                            <h:column>
+                                                <f:facet name="header" >Username</f:facet>
+                                                #{currentCustomer.customerId}
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header" class="text-primary">Password</f:facet>
+                                                #{currentCustomer.customerPassword}
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header" class="text-primary">Fullname</f:facet>
+                                                #{currentCustomer.customerName}
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header" class="text-primary">Address</f:facet>
+                                                #{currentCustomer.customerAddress}
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header" class="text-primary">Phone</f:facet>
+                                                #{currentCustomer.phoneNo}
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header" class="text-primary">Status</f:facet>
+                                                #{CustomerController.getCustomerStatusString( currentCustomer.customerStatus )}
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header" class="text-primary">Method</f:facet>
+                                                <p:commandButton value="Edit" action="#{CustomerController.redirect(currentCustomer)}" />
+                                                <p:commandButton value="Delete" action="#{CustomerController.remove(currentCustomer)}" />
+                                            </h:column>
+                                        </h:dataTable>
+                                        <p:commandButton value="Create new customer" action="admin_Customer_Create?faces-redirect=true" />
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:decorate>
+    </h:body>
+</html>
+

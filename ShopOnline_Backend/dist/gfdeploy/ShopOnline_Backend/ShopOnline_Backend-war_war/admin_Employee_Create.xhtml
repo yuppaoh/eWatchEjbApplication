@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Admin - Create Employee</title>
+        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="apple-touch-icon" sizes="76x76" href="resources/adminMainPageResource/img/apple-icon.png" />
+        <link rel="icon" type="image/png" href="resources/adminMainPageResource/img/favicon.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+        <link rel="stylesheet" type="text/css" href="resources/adminMainPageResource/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="resources/adminMainPageResource/css/now-ui-dashboard.css" />
+    </h:head>
+    <h:body>
+        <ui:decorate template="layouts/adminTemplate.xhtml">
+            <ui:define name="EmployeeCreate">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                              <h4 class="card-title"> Create new employee account</h4>
+                            </div> 
+                            <div class="card-body">
+                                <h:form>
+                                    <div class="row">
+                                        <div class="col-md-12 pr-1">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <h:inputText id="employeeUsername" class="form-control" disabled="false" value="#{EmployeeController.userName}" required="true" requiredMessage="This field is required" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <h:inputText id="employeePassword" class="form-control" disabled="false" value="#{EmployeeController.userPassword}" required="true" requiredMessage="This field is required" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Role</label>
+                                                <h:selectOneMenu value = "#{EmployeeController.userRole}"> 
+                                                    <f:selectItem itemValue = "admin" itemLabel = "Admin"  /> 
+                                                    <f:selectItem itemValue = "employee" itemLabel = "Employee" /> 
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 pr-1">
+                                            <h:commandButton value="Create" action="#{EmployeeController.create()}" />
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:decorate>
+        <!--   Core JS Files   -->
+        <script src="resources/adminMainPageResource/js/core/jquery.min.js"></script>
+        <script src="resources/adminMainPageResource/js/core/popper.min.js"></script>
+        <script src="resources/adminMainPageResource/js/core/bootstrap.min.js"></script>
+        <script src="resources/adminMainPageResource/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="resources/adminMainPageResource/js/plugins/bootstrap-notify.js"></script>
+        <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="resources/adminMainPageResource/js/now-ui-dashboard.js" type="text/javascript"></script>
+        <script src="resources/adminMainPageResource/demo/demo.js"></script>
+    </h:body>
+</html>
+
