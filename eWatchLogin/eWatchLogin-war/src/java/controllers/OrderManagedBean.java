@@ -23,6 +23,7 @@ import javax.ejb.EJB;
 @SessionScoped
 public class OrderManagedBean implements Serializable {
 // customerId
+
     @EJB
     private CustomersFacadeLocal customersFacade;
     private Customers customer;
@@ -38,51 +39,58 @@ public class OrderManagedBean implements Serializable {
     public void setOrder(Orders order) {
         this.order = order;
     }
-    
-            
+
     public OrderManagedBean() {
 // customerId
-    customer = new Customers();
+        customer = new Customers();
     }
-    
-    public List<Orders> findAll(){
+
+    public List<Orders> findAll() {
         return this.ordersFacade.findAll();
     }
-    
-    public String create(){
+
+    public String create() {
         this.order.setCustomerId(this.customersFacade.find(this.customer.getCustomerId()));
         this.ordersFacade.create(order);
         this.order = new Orders();
         System.out.println("in create() function");
         return "b_order";
     }
-    
-    public String edit(Orders o){
+
+    public String edit(Orders o) {
         this.order = o;
         return "b_order_edit";
     }
-    public String edit(){
+
+    public String edit() {
         this.ordersFacade.edit(this.order);
         return "b_order";
     }
     
+    public void delete(Orders order){
+        this.ordersFacade.remove(order);
+    }
 
 // customerId
     public CustomersFacadeLocal getCustomersFacade() {
         return customersFacade;
     }
-    public void setCustomersFacade(CustomersFacadeLocal customersFacade) {    
+
+    public void setCustomersFacade(CustomersFacadeLocal customersFacade) {
         this.customersFacade = customersFacade;
     }
 
     public Customers getCustomer() {
         return customer;
     }
+
     public void setCustomer(Customers customer) {
         this.customer = customer;
     }
-    public Orders getOrder(Integer id){
+
+    public Orders getOrder(Integer id) {
         return this.ordersFacade.find(id);
     }
-    
+
+
 }

@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Order list</title>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <script src="./resources/js/jquery.min.js"></script>
+        <script src="./resources/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="templates/header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <div class="container">
+            <c:forEach items="#{orderManagedBean.findAll()}" var="item">
+                <h:outputText value="Order No: #{item.orderId}"/><br/>
+                <table border="1" cellpadding="1" cellspacing="1">
+                    <tr>
+                        <c:forEach items="#{orderdetailController.findAll()}" var="detail">
+                            <c:if test="#{detail.orderId.orderId == item.orderId}">
+                                <td>
+                                    #{detail.productId.productName}
+                                </td>
+                                <td>
+                                    #{detail.quantity}
+                                </td>
+                                <td>
+                                    #{detail.unitPrice}
+                                </td>
+                                <td>
+                                    #{detail.unitPrice * detail.quantity}
+                                </td>
+                            </c:if>
+                        </c:forEach>
+                    </tr>
+                </table>
+
+            </c:forEach>
+        </div>
+
+        <div class="container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h:form>
+                            <h3><h:outputText value="Order List"/></h3>
+                            <h:dataTable value="#{orderManagedBean.findAll()}" var="item">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="OrderId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.orderId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="OrderDate"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.orderDate}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="OrderStatus"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.orderStatus}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="DeliveryDate"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.deliveryDate}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Description"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.description}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="CustomerId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.customerId.customerName}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Action"/>
+                                    </f:facet>
+                                    <div style="padding: 5px 10px;">
+                                        <h:commandButton value="Cancel" action="#{orderManagedBean.delete(item)}" class="btn btn-block btn-sm btn-danger"/>
+                                    </div>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                    <div class="col-md-6">
+                        <h:form>
+                            <h3><h:outputText value="Orderdetail List"/></h3>
+                            <h:dataTable value="#{orderdetailController.findAll()}" var="item">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Quantity"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.quantity}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="UnitPrice"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.unitPrice}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="OrderId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.orderId.orderId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ProductId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.productId.productId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ProductName"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.productId.productName}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Action"/>
+                                    </f:facet>
+                                    <div style="padding: 5px 10px;">
+                                        <h:commandButton value="Delete" action="#{orderdetailController.delete(item)}" class="btn btn-block btn-sm btn-danger"/>
+                                    </div>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Footer-->
+        <br/><br/>
+        <div class="container-fluid">
+            <ui:insert name="footer">
+                <ui:include src="templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+    </h:body>
+</html>
+

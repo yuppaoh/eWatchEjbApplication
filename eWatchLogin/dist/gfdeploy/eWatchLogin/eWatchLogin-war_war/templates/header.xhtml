@@ -38,12 +38,22 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#">Luxury Watchs</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="product-detail.xhtml">Product-detail</a><h:link value="product" outcome="product-detail"/></li>
-                            <li><a href="#">Others</a></li>
-                        </ul>
-                        </li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact us</a></li>
+                                    <c:if test="#{sessionScope.customerId != null}">
+                                        <li>
+                                            <a href="cart-list.xhtml">Check cart</a>
+                                            <!--<h:link value="product" outcome="product-detail"/>-->
+                                        </li>
+                                        <li>
+                                            <a href="order-list.xhtml">Order list</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                    </c:if>
+
+                                    <li><a href="#">Others</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <c:if test="#{sessionScope.customerId == null}">
@@ -55,7 +65,7 @@
                             </c:if>
                             <c:if test="#{sessionScope.customerId != null}">
                                 <li>
-                                    <a href="#">
+                                    <a href="cart-list.xhtml">
                                         <img src="vendors/img/logos/cart-1.png" alt=""/>
                                         <span class="badge text-white"  style="background: rgb(220, 53, 69); margin-top: -20px;">#{cartManagedBean.findByCustomerId().size()}</span>
                                     </a>

@@ -34,10 +34,6 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
     public List<Products> findByType(String query){
         List<Products> products = em.createQuery("SELECT p FROM Products p WHERE p.productType = :productType")
                 .setParameter("productType", query).getResultList();
-
-//        List<Products> products = em.createQuery("Products.findByProductType")
-//                .setParameter("productType", query).getResultList();
-
         return products;
     }
     

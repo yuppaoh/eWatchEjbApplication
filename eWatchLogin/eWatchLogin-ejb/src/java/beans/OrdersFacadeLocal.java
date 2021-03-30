@@ -30,4 +30,6 @@ public interface OrdersFacadeLocal {
 
     int count();
     
+    List<Orders> findByCustomer(String query);
+    
 }

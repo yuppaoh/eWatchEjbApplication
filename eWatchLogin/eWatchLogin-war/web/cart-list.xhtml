@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Cart</title>
+        <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+        <script src="./resources/js/jquery.min.js"></script>
+        <script src="./resources/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css"/>        
+        <style>
+            /*table.people td,*/
+
+            .btn-math{
+                width: 35px;
+                height: 35px;
+            }
+            .btn-math:hover{
+                background-color: #f8efc0;
+            }
+
+            .cartTable {   
+                border-collapse:collapse;
+                border:1px solid lavender;
+            }
+            .cartTableHeader {
+                text-align:center;
+                background:none repeat scroll 0 0 #001B39;
+                color: white;
+                border-bottom:1px solid #A0A0A0;  
+                padding: 25px;
+            }
+            .cartTableOddRow {
+                text-align:center;
+                background:none repeat scroll 0 0 #ffffff;	
+            }
+
+            .cartTableEvenRow {
+                text-align:center;
+                background:none repeat scroll 0 0 #F2F5F9;
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="templates/header.xhtml" />
+            </ui:insert>
+        </div>
+        <div class="container-fluid">
+            <center>
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="Item list in cart"/></h1><br/>
+                        <h:dataTable value="#{cartManagedBean.findByCustomerId()}" var="item"
+                                     styleClass="cartTable"
+                                     headerClass = "cartTableHeader"
+                                     rowClasses = "cartTableOddRow,cartTableEvenRow">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CartId"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cartId}"/><br/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CustomerId"/>
+                                </f:facet>
+                                <h:outputText value="#{item.customerId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Image"/>
+                                </f:facet>
+                                <h:commandLink value="" action="#{productManagedBean.listToProductDetail(item.productId)}">
+                                    <img class="img-responsive zoom-img" src="vendors/img/product/#{productManagedBean.findProduct(item.productId).productImage}" alt=""/>
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ProductName"/>
+                                </f:facet>
+                                <h:dataTable value="#{productManagedBean.findProduct(item.productId)}" var="m">
+                                    <h:column>
+                                        <h:outputText value="#{m.productName}"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:column>
+                            <h:column>
+                                <center>
+                                    <f:facet name="header">
+                                        <h:outputText value="Quantity"/>
+                                    </f:facet>
+                                    &nbsp;<h:commandButton value="-" action="#{cartManagedBean.cartDescreaseNow(item)}" styleClass="btn btn-sm btn-math"/>
+                                    &nbsp;<h:outputText value="#{item.quantity}"/>&nbsp;
+                                    <h:commandButton value="+" action="#{cartManagedBean.cartIncreaseNow(item)}" styleClass="btn btn-sm btn-math"/>&nbsp;
+                                </center>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Action"/>
+                                </f:facet>
+                                <div style="padding: 5px 10px;">
+                                    <h:commandButton value="Buy now" action="#" class="btn btn-block btn-sm btn-success"/>
+                                </div>
+                                <div style="padding: 5px 10px;">
+                                    <h:commandButton value="Delete" action="#{cartManagedBean.delete(item)}" class="btn btn-block btn-sm btn-danger"/>
+                                </div>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+            </center>
+        </div>
+        <!--Footer-->
+        <br/><br/>
+        <div class="container-fluid">
+            <ui:insert name="footer">
+                <ui:include src="templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+    </h:body>
+</html>
+

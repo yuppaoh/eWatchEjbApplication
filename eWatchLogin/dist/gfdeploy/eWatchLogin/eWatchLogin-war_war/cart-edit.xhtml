@@ -11,14 +11,13 @@
             <h:form>
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="CartId:" for="cartId" />
-                    <h:inputText id="cartId" value="#{cartManagedBean.cart.cartId}" title="CartId" required="true" requiredMessage="The CartId field is required."/>
-                    <h:outputLabel value="CustomerId:" for="customerId" />
-                    <h:inputText id="customerId" value="#{cartManagedBean.cart.customerId}" title="CustomerId" required="true" requiredMessage="The CustomerId field is required."/>
-                    <h:outputLabel value="ProductId:" for="productId" />
-                    <h:inputText id="productId" value="#{cartManagedBean.cart.productId}" title="ProductId" required="true" requiredMessage="The ProductId field is required."/>
                     <h:outputLabel value="Quantity:" for="quantity" />
                     <h:inputText id="quantity" value="#{cartManagedBean.cart.quantity}" title="Quantity" required="true" requiredMessage="The Quantity field is required."/>
+                    
+                    <h:commandButton value="Save" action="#{cartManagedBean.edit()}"/>
+                    <h:commandButton value="-" action="#" styleClass="btn btn-sm btn-math"/>
+                    <h:commandButton value="+" action="#{cartManagedBean.cartIncrease()}" styleClass="btn btn-sm btn-math"/>
+                    
                 </h:panelGrid>
             </h:form>
         </f:view>

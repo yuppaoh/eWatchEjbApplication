@@ -5,14 +5,14 @@
         <group>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/login.xhtml</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/src/java/controllers/OrderManagedBean.java</file>
+            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/src/java/controllers/OrderdetailController.java</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/src/java/controllers/ProductManagedBean.java</file>
-            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/templates/header.xhtml</file>
-            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/src/java/controllers/CustomerManagedBean.java</file>
+            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/resources/js/bill.js</file>
+            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/cart-list.xhtml</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/home.xhtml</file>
-            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/templates/footer.xhtml</file>
+            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/order-list.xhtml</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/product-detail.xhtml</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/product-order.xhtml</file>
-            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/web/b_order.xhtml</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-war/src/java/controllers/CartManagedBean.java</file>
         </group>
     </open-files>

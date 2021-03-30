@@ -88,7 +88,6 @@
                                 <h:form>
                                     <h:commandButton class="btn btn-block btn-primary btn-lg" value="Add to Cart" action="#{productManagedBean.addCart()}"/>
                                 </h:form>
-                                <!--<button class="btn btn-block btn-primary btn-lg">Add to Cart</button>-->
                             </div>
                             <div class="col-md-6" style="margin-top: 5px; margin-bottom: 2px;">
 <!--                                <h:form>
@@ -117,72 +116,7 @@
                 </div>
             </div><br/>
 <!--form for test-->
-<hr/>
-<h3>Test erea</h3>
-<div class="row" style="background-color: gray;">
-    <div class="col-md-4">
-        <h:form>
-            <h3><h:outputText value="Create/Edit"/></h3>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="CustomerId:" for="customerId" />
-                <h:selectOneMenu id="customerId" value="#{orderManagedBean.customer.customerId}" title="CustomerId" >
-                    <f:selectItems value="#{customerManagedBean.findAll()}" 
-                                   var="c" itemLabel="#{c.customerName}" itemValue="#{c.customerId}"/>
-                </h:selectOneMenu>
-                <h:commandButton value="Save" action="#{productManagedBean.orderProduct()}"/>
-            </h:panelGrid>
-        </h:form>
-    </div>
-    <div class="col-md-8">
-        <h:form>
-            <h1><h:outputText value="List"/></h1>
-            <h:dataTable value="#{orderManagedBean.findAll()}" var="item">
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="OrderId"/>
-                    </f:facet>
-                    <h:outputText value="#{item.orderId}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="OrderDate"/>
-                    </f:facet>
-                    <h:outputText value="#{item.orderDate}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="OrderStatus"/>
-                    </f:facet>
-                    <h:outputText value="#{item.orderStatus}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="DeliveryDate"/>
-                    </f:facet>
-                    <h:outputText value="#{item.deliveryDate}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Description"/>
-                    </f:facet>
-                    <h:outputText value="#{item.description}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="CustomerId"/>
-                    </f:facet>
-                    <h:outputText value="#{item.customerId.customerId}"/>
-                </h:column>
-            </h:dataTable>
-        </h:form>
 
-    </div>
-</div>
-<hr/>
 <!--form for test END-->
 
             <div class="container-fluid">
@@ -191,7 +125,11 @@
                     <div class="container-fluid">
                         <f:view>
                             <div class=" container-fluid row" style="padding-left: 0px; padding-right: 0px;">
-                                <c:forEach items="#{productManagedBean.findByType(productManagedBean.product.productType)}" var="item">
+                                <!--<c:forEach items="{productManagedBean.findByType(productManagedBean.product.productType)}" var="item">-->
+                                <c:forEach items="#{productManagedBean.findAll()}" var="item">
+                                    <c:if test="#{item.productType == productManagedBean.product.productType}">
+                                        <!--<h3>{item.productId}</h3>-->
+                                    
                                     <div class="col-md-3 product-left product-margin-bottom">
                                         <div class="product-main simpleCart_shelfItem">
                                             <center>
@@ -215,6 +153,7 @@
 
                                         </div>
                                     </div>
+                                        </c:if>
                                 </c:forEach>
                             </div>
                         </f:view>

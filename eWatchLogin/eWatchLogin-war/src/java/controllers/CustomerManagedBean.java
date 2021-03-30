@@ -135,9 +135,7 @@ public class CustomerManagedBean implements Serializable {
             System.out.println("===============================");
             System.out.println("go to Catch");
         }
-
         return page;
-
     }
 
     public String create() {

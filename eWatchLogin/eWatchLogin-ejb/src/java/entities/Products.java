@@ -6,7 +6,9 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +19,11 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,6 +41,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Products.findByUnitPrice", query = "SELECT p FROM Products p WHERE p.unitPrice = :unitPrice")
     , @NamedQuery(name = "Products.findByQuantity", query = "SELECT p FROM Products p WHERE p.quantity = :quantity")})
 public class Products implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId")
+    private List<Orderdetails> orderdetailsList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -160,6 +167,15 @@ public class Products implements Serializable {
     @Override
     public String toString() {
         return "entities.Products[ productId=" + productId + " ]";
+    }
+
+    @XmlTransient
+    public List<Orderdetails> getOrderdetailsList() {
+        return orderdetailsList;
+    }
+
+    public void setOrderdetailsList(List<Orderdetails> orderdetailsList) {
+        this.orderdetailsList = orderdetailsList;
     }
     
 }
