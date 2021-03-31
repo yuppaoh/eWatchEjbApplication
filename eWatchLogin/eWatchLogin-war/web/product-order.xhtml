@@ -154,7 +154,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <!--<h:commandButton value="Confirm" action="{productManagedBean.orderProductCreate(orderdetailController.orderdetail.quantity)}" styleClass="btn btn-block btn-primary"/>-->
-                                            <h:commandButton value="Click to Order" action="#{productManagedBean.orderProductCreate(Quantity)}" styleClass="btn btn-block btn-primary"/>
+                                            <h:commandButton value="Confirm" action="#{productManagedBean.orderProductCreate(Quantity)}" styleClass="btn btn-block btn-primary"/>
                                         </div>
                                         <div class="col-md-6">
                                             <a href="home.xhtml" class="btn btn-block btn-default">Cancel</a>
@@ -290,18 +290,6 @@
             </div>
 
         </div>
-        <hr/>
-        <div class="container-fluid">
-            <f:view>
-                <h:form>
-                    <h:commandButton value="Confirm" action="#{productManagedBean.orderProductCreate(orderdetailController.orderdetail.quantity)}" styleClass="btn btn-block btn-primary"/>
-                    <br/>
-                    <a href="home.xhtml" class="btn btn-block btn-default">Cancel</a>
-                </h:form>
-            </f:view>
-        </div>
-
-        <hr/>
 
         <!--Footer-->
         <br/><br/>

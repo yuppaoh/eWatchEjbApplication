@@ -49,7 +49,7 @@
         <div class="container">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <h:form>
                             <h3><h:outputText value="Order List"/></h3>
                             <h:dataTable value="#{orderManagedBean.findAll()}" var="item">
@@ -59,11 +59,11 @@
                                     </f:facet>
                                     <h:outputText value="#{item.orderId}"/>
                                 </h:column>
-                                <h:column>
+<!--                                <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="OrderDate"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.orderDate}">
+                                    <h:outputText value="{item.orderDate}">
                                         <f:convertDateTime pattern="MM/dd/yyyy" />
                                     </h:outputText>
                                 </h:column>
@@ -71,13 +71,13 @@
                                     <f:facet name="header">
                                         <h:outputText value="OrderStatus"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.orderStatus}"/>
+                                    <h:outputText value="{item.orderStatus}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="DeliveryDate"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.deliveryDate}">
+                                    <h:outputText value="{item.deliveryDate}">
                                         <f:convertDateTime pattern="MM/dd/yyyy" />
                                     </h:outputText>
                                 </h:column>
@@ -85,8 +85,8 @@
                                     <f:facet name="header">
                                         <h:outputText value="Description"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.description}"/>
-                                </h:column>
+                                    <h:outputText value="{item.description}"/>
+                                </h:column>-->
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="CustomerId"/>

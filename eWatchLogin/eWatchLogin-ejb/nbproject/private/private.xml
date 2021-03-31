@@ -5,10 +5,8 @@
         <group>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-ejb/src/java/beans/ProductsFacade.java</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-ejb/src/java/entities/Orderdetails.java</file>
-            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-ejb/src/java/beans/OrderdetailsFacade.java</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-ejb/src/java/entities/Customers.java</file>
             <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-ejb/src/java/beans/CartsFacade.java</file>
-            <file>file:/E:/MyProgram/Aptech/Subject/47_ejbProject/srcOnGitHub/eWatchLogin/eWatchLogin-ejb/src/java/beans/OrderdetailsFacadeLocal.java</file>
         </group>
     </open-files>
 </project-private>

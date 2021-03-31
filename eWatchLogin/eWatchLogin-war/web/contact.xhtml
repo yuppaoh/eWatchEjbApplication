@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Contact</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/js/jquery.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <!--slider-->
+        <script src="resources/js/jquery-1.11.0.min.js.download"></script>
+        <!--about-->
+        <link href="resources/css/style_ew.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/style_ew1.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/style_ew2.css" rel="stylesheet" type="text/css"/>
+        <style type="text/css">
+            div{
+                /* border: 1px dotted blue; */
+            }
+            .mymap {
+                height: 420px;
+            }
+            .lienhe1{
+                margin: 0px;
+                height: 430px;
+                width: 100%;
+            }
+
+
+            .mymap {
+                height: 300px;
+            }
+
+            .lienhe1{
+                margin: 0px;
+                height: 450px;
+                width: 100%;
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="templates/header.xhtml" />
+            </ui:insert>
+        </div>
+        <!--<div style="height: 80px;"></div>-->
+
+
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="lienhe1" style="background:khaki;">
+                        <div style="padding: 5px;">
+                            <form class="mx-auto" name="frmlienhe" id="frmlienhe" method="POST" action="#">
+                                <h2 style="padding-top: 0px; color: blue; font-family: 'Times New Roman', Times, serif; font-weight: bold;">Contact</h2>
+                                <div class="form-row" style="height: 10px;"></div>
+
+                                <div class="form-row">
+                                    <div class="input-group col-6 col-md-6 mb-2 mb-md-0">
+                                        <input type="text" id="name" name="name" class="form-control form-control-md" placeholder="Name"/>
+                                    </div>
+                                    <div style="height: 10px;"></div>
+                                    <div class="input-group col-6 col-md-6 mb-2 mb-md-0">
+                                        <input type="email" id="email" name="email" class="form-control form-control-md" placeholder="name@gmail.com"/>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="height: 10px;"></div>
+                                <div class="form-row">
+                                    <div class="input-group col-12 col-md-12 mb-2 mb-md-0">
+                                        <input type="text" id="title" name="title" class="form-control form-control-md" placeholder="Title"/>
+                                    </div>
+                                </div>
+
+                                <div style="height: 20px;"></div>
+                                <div class="form-row">
+                                    <div class="input-group col-12 col-md-12 mb-2 mb-md-0">
+                                        <textarea type="text" rows="7" name="txtnoidung" id="txtnoidung" class="form-control form-control-md" placeholder="Type comment here"></textarea>
+                                    </div>
+                                </div>
+                                <div style="height: 20px;"></div>
+                                <div class="form-row">
+                                    <div class="col-12 col-md-6">
+                                        <button style="margin-left: -15px;" type="submit" name="btnGuiMail" id="btnGuiMail" class="btn btn-block btn-md btn-primary">Send</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 ">
+                    <div class="map" id="map">
+                        <iframe class="mymap lienhe1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.64859793234!2d105.78714431384577!3d10.045828392819752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a062af21cb49c7%3A0xff6770616331b95b!2sCafe+Fooball!5e0!3m2!1sen!2s!4v1564407973123!5m2!1sen!2s" frameborder="0" style="border:0" allowfullscreen="true"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div><br/>
+
+        <!--Footer-->
+        <div class="container-fluid">
+            <ui:insert name="footer">
+                <ui:include src="templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+
+    </h:body>
+</html>

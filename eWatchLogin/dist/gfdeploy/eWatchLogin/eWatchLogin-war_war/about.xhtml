@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Home page</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/js/jquery.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <!--slider-->
+        <script src="resources/js/jquery-1.11.0.min.js.download"></script>
+        <!--about-->
+        <link href="resources/css/style_ew.css" rel="stylesheet" type="text/css"/> <!--include footer-->
+        <link href="resources/css/style_ew1.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/style_ew2.css" rel="stylesheet" type="text/css"/> <!--include footer-->
+        <style>
+            *{
+                margin-left: 0px;
+                margin-right: 0px;
+                padding-bottom: 0px;
+                margin-bottom: 0px;
+
+            }
+            .product-margin-bottom{
+                margin-bottom: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="templates/header.xhtml" />
+            </ui:insert>
+        </div>
+        <!--<div style="height: 80px;"></div>-->
+
+        
+
+        <!--Footer-->
+        <div class="container-fluid">
+            <ui:insert name="footer">
+                <ui:include src="templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+
+    </h:body>
+</html>
