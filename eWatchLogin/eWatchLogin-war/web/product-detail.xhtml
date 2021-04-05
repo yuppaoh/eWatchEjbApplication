@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
@@ -39,7 +40,7 @@
             .a:hover{
                 text-decoration: none;
             }
-            
+
             .product-margin-bottom{
                 margin-bottom: 20px;
             }
@@ -90,9 +91,9 @@
                                 </h:form>
                             </div>
                             <div class="col-md-6" style="margin-top: 5px; margin-bottom: 2px;">
-<!--                                <h:form>
-                                    <h:commandButton class="btn btn-block btn-success btn-lg" value="Buy now" action="{productManagedBean.orderProduct()}"/>
-                                </h:form>-->
+                                <!--                                <h:form>
+                                                                    <h:commandButton class="btn btn-block btn-success btn-lg" value="Buy now" action="{productManagedBean.orderProduct()}"/>
+                                                                </h:form>-->
                                 <a href="product-order.xhtml" class="btn btn-block btn-success btn-lg">Buy now</a>
                             </div>
                         </div>
@@ -115,9 +116,9 @@
                     </div>
                 </div>
             </div><br/>
-<!--form for test-->
+            <!--form for test-->
 
-<!--form for test END-->
+            <!--form for test END-->
 
             <div class="container-fluid">
                 <div class="row">
@@ -129,31 +130,31 @@
                                 <c:forEach items="#{productManagedBean.findAll()}" var="item">
                                     <c:if test="#{item.productType == productManagedBean.product.productType}">
                                         <!--<h3>{item.productId}</h3>-->
-                                    
-                                    <div class="col-md-3 product-left product-margin-bottom">
-                                        <div class="product-main simpleCart_shelfItem">
-                                            <center>
-                                                <h:form>
-                                                    <h:commandLink action="#{productManagedBean.productDetail(item)}" value="">
-                                                        <img class="img-responsive zoom-img" src="vendors/img/product/#{item.productImage}" alt=""/>
-                                                    </h:commandLink>
-                                                </h:form>
-                                            </center>
-                                            <div class="product-bottom">
-                                                <h3>#{item.productName}</h3>
-                                                <p>#{item.description}</p>
-                                                <h4>
-                                                    <a class="item_add" href="#"><i></i></a>
-                                                    <span class=" item_price">$ #{item.unitPrice}</span>
-                                                </h4>
-                                            </div>
-                                            <!--                                            <div class="srch">
-                                                                                            <span>-50%</span>
-                                                                                        </div>-->
 
+                                        <div class="col-md-3 product-left product-margin-bottom">
+                                            <div class="product-main simpleCart_shelfItem">
+                                                <center>
+                                                    <h:form>
+                                                        <h:commandLink action="#{productManagedBean.productDetail(item)}" value="">
+                                                            <img class="img-responsive zoom-img" src="vendors/img/product/#{item.productImage}" alt=""/>
+                                                        </h:commandLink>
+                                                    </h:form>
+                                                </center>
+                                                <div class="product-bottom">
+                                                    <h3>#{item.productName}</h3>
+                                                    <p>#{item.description}</p>
+                                                    <h4>
+                                                        <a class="item_add" href="#"><i></i></a>
+                                                        <span class=" item_price">$ #{item.unitPrice}</span>
+                                                    </h4>
+                                                </div>
+                                                <!--                                            <div class="srch">
+                                                                                                <span>-50%</span>
+                                                                                            </div>-->
+
+                                            </div>
                                         </div>
-                                    </div>
-                                        </c:if>
+                                    </c:if>
                                 </c:forEach>
                             </div>
                         </f:view>
@@ -172,15 +173,32 @@
                             <div class="card st-card card-normal">
                                 <h2 class="card-title card-title--badge" style="font-size: 30px;">
                                     Comment on this product
-                                    <span class="badge text-white" style="background: rgb(220, 53, 69);">2</span>
+                                    <span class="badge text-white" style="background: rgb(220, 53, 69);"></span>
                                 </h2>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col">
-                                            <div class="c-user-rate-form f-comment-0"><textarea name="" id="f-comment-0" rows="4" placeholder="Input your comment here"></textarea><button class="btn btn-primary" data-id="0">Send</button></div>
-                                            <p class="f-err" style="display: none;">Input your comment.(Minium 3 characters)</p>
-                                        </div>
+                                        <h:form>
+                                            <div class="col">
+                                                <div class="c-user-rate-form f-comment-0">
+                                                    <!--                                                    <textarea name="" id="f-comment-0" rows="4" placeholder="Input your comment here"></textarea>
+                                                                                                        <button class="btn btn-primary" data-id="0">Send</button>-->
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="c-user-rate-form f-comment-0">
+                                                            <h:inputTextarea class="form-control" rows="4" id="comment" value="#{commentManagedBean.comment.comment}" title="Comment" />
+                                                            <h:commandButton value="Send comment" action="#{commentManagedBean.create(productManagedBean.product)}" class="btn btn-lg btn-primary" a:placeholder="Input your comment here"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <p class="f-err" style="display: none;">Input your comment.(Minium 3 characters)</p>
+                                            </div>
+                                        </h:form>
                                     </div>
+
+
 
                                     <!--one comment-->
                                     <div class="modal modal-comment js-modal" id="js-modal-cmt" data-animation="on">
@@ -209,109 +227,52 @@
                                                     </div><button type="submit" class="btn btn-primary js-modal__close">Gửi nhận xét</button>
                                                 </form>
                                             </div>
-                                            <button class="reset modal__close-btn js-modal__close" style="cursor: pointer;"><svg class="icon" viewBox="0 0 16 16"><title>Close modal window</title><g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line><line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line></g></svg></button></div>
-                                    </div>
-
-                                    <!--Data in table comment-->
-                                    <div class="row">
-                                        <div class="c-comment " id="f-comment-root">
-
-                                            <!--Client comment-->
-                                            <div class="c-comment-box">
-                                                <div class="c-comment-box__avatar">T</div>
-                                                <div class="c-comment-box__content">
-                                                    <div class="c-comment-name">Quy
-                                                        <div class="time">1 day before</div>
-                                                    </div>
-
-                                                    <!--Noi dung trong column on table comment-->
-                                                    <div class="c-comment-text" data-idcmt="4743605">Where are you brand of shop in Vietnam?</div>
-                                                    <div class="c-comment-status"><a style="cursor: pointer;">Reply</a></div>
-                                                </div>
-                                            </div>
-
-                                            <!--Shop reply-->
-                                            <div class="c-comment-box level2">
-                                                <div class="c-comment-box__avatar">A</div>
-                                                <div class="c-comment-box__content">
-                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
-                                                        <div class="time">1 day before</div>
-                                                    </div>
-                                                    <div class="c-comment-text" data-idcmt="4743731">
-
-                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
-                                                    </div>
-                                                    <div class="c-comment-status"></div>
-                                                </div>
-                                            </div>
-
-                                            <!--Client comment-->
-                                            <div class="c-comment-box">
-                                                <div class="c-comment-box__avatar">M</div>
-                                                <div class="c-comment-box__content">
-                                                    <div class="c-comment-name">Minh
-                                                        <div class="time">2 day before</div>
-                                                    </div>
-                                                    <div class="c-comment-text" data-idcmt="4732056">is this watch for Kids?</div>
-                                                    <div class="c-comment-status"><a style="cursor: pointer;">Reply</a></div>
-                                                </div>
-                                            </div>
-
-                                            <!--Shop reply 1-->
-                                            <div class="c-comment-box level2">
-                                                <div class="c-comment-box__avatar">A</div>
-                                                <div class="c-comment-box__content">
-                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
-                                                        <div class="time">1 day before</div>
-                                                    </div>
-                                                    <div class="c-comment-text" data-idcmt="4743731">
-
-                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
-                                                    </div>
-                                                    <div class="c-comment-status"></div>
-                                                </div>
-                                            </div>
-                                            <!--Shop reply 2-->
-                                            <div class="c-comment-box level2">
-                                                <div class="c-comment-box__avatar">A</div>
-                                                <div class="c-comment-box__content">
-                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
-                                                        <div class="time">1 day before</div>
-                                                    </div>
-                                                    <div class="c-comment-text" data-idcmt="4743731">
-
-                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
-                                                    </div>
-                                                    <div class="c-comment-status"></div>
-                                                </div>
-                                            </div>
-                                            <!--Shop reply 3-->
-                                            <div class="c-comment-box level2">
-                                                <div class="c-comment-box__avatar">A</div>
-                                                <div class="c-comment-box__content">
-                                                    <div class="c-comment-name">Ngan Luu Ngoc<span class="badge badge-primary">Admin</span>
-                                                        <div class="time">1 day before</div>
-                                                    </div>
-                                                    <div class="c-comment-text" data-idcmt="4743731">
-
-                                                        <p>Hi! {name of customer},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
-                                                    </div>
-                                                    <div class="c-comment-status"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="c-comment-pagination margin-bottom-10 commentdetail" style="text-align: center;">
-                                                <ul class="pagination text-center">
-                                                    <!--                                                    <li class="pagination-item"><a class="pagination-link active" style="cursor: pointer;">1</a></li>
-                                                                                                        <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">2</a></li>
-                                                                                                        <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">3</a></li>
-                                                                                                        <li class="pagination-item"><a class="pagination-link" style="cursor: pointer;">4</a></li>-->
-                                                    <!--                                                    <li class="pagination-item to-top" title="Tiến 1 trang"><a class="pagination-link" aria-label="Next" style="cursor: pointer;"><i class="demo-icon icon-angle-right"></i></a></li>
-                                                                                                        <li title="Đến trang cuối cùng" class="pagination-item to-top"><a class="pagination-link" aria-label="Next" style="cursor: pointer;"><i class="demo-icon icon-angle-double-right"></i></a></li>-->
-                                                </ul>
-                                            </div>
+                                            <button class="reset modal__close-btn js-modal__close" style="cursor: pointer;"><svg class="icon" viewBox="0 0 16 16"><title>Close modal window</title><g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line><line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line></g></svg></button>
                                         </div>
                                     </div>
+
+                                    <!--Comment--> 
+                                    <c:forEach items="#{commentManagedBean.findAll()}" var="item">
+                                        <c:if test="#{item.productId == productManagedBean.product}">
+
+                                            <!--Data in table comment-->
+                                            <div class="row">
+                                                <div class="c-comment " id="f-comment-root">
+                                                    <!--Client comment-->
+                                                    <div class="c-comment-box">
+                                                        <div class="c-comment-box__avatar">T</div>
+                                                        <div class="c-comment-box__content">
+                                                            <div class="c-comment-name">#{item.customerId.customerName}
+                                                                <div class="time"> -&nbsp; 
+                                                                    <h:outputText value="#{item.commentDate}">  
+                                                                        <f:convertDateTime type="date" dateStyle="medium"/>  
+                                                                    </h:outputText>
+                                                                </div>
+                                                            </div>
+                                                            <div class="c-comment-text" data-idcmt="4743605">#{item.comment}</div>
+                                                            <div class="c-comment-status"><a style="cursor: pointer;">Reply</a></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--Shop reply-->
+                                                    <div class="c-comment-box level2">
+                                                        <div class="c-comment-box__avatar">A</div>
+                                                        <div class="c-comment-box__content">
+                                                            <div class="c-comment-name">eWatch<span class="badge badge-primary">Admin</span>
+                                                                <!--<div class="time">1 day before</div>-->
+                                                            </div>
+                                                            <div class="c-comment-text" data-idcmt="4743731">
+
+                                                                <p>Hi! #{item.customerId.customerName},<br/> Please contact us through 18006601 for support you!<br/> Thanks!</p>
+                                                            </div>
+                                                            <div class="c-comment-status"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                    </c:forEach>
+
+
                                 </div>
                             </div>
                         </div>

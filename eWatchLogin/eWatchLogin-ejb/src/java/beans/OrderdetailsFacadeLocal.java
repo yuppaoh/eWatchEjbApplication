@@ -31,6 +31,6 @@ public interface OrderdetailsFacadeLocal {
 
     int count();
     
-    List<Orderdetails> findByOrderId(Orders query);
+    List<Orderdetails> findByOrderId(Object orderId);
     
 }

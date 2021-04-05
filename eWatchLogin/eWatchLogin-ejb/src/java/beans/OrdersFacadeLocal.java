@@ -5,6 +5,7 @@
  */
 package beans;
 
+import entities.Customers;
 import entities.Orders;
 import java.util.List;
 import javax.ejb.Local;
@@ -30,6 +31,8 @@ public interface OrdersFacadeLocal {
 
     int count();
     
-    List<Orders> findByCustomer(String query);
+    List<Orders> findByCustomer(Object customerId);
+
+//    public List<Orders> findByCustomer(Customers cid);
     
 }

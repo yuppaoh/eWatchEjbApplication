@@ -31,9 +31,9 @@ public class OrdersFacade extends AbstractFacade<Orders> implements OrdersFacade
     }
 
     @Override
-    public List<Orders> findByCustomer(String query) {
+    public List<Orders> findByCustomer(Object customerId) {
         List<Orders> orders =  em.createQuery("SELECT o FROM Orders o WHERE o.customerId = :customerId")
-                .setParameter("customerId", query).getResultList();
+                .setParameter("customerId", customerId).getResultList();
         return orders;
     }
     

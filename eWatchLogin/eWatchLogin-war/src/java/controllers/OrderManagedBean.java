@@ -14,6 +14,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -49,6 +51,26 @@ public class OrderManagedBean implements Serializable {
         return this.ordersFacade.findAll();
     }
 
+    public List<Orders> findByCustomerId() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        Customers cid = this.customersFacade.find(session.getAttribute("customerId"));
+        return this.ordersFacade.findByCustomer(cid);
+    }
+
+    public String showDetail(Orders order) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        session.setAttribute("orderSession", order);
+        return "orderdetail-list";
+    }
+
+    public void showDetailLocal(Orders order) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        session.setAttribute("orderSession", order);
+    }
+
     public String create() {
         this.order.setCustomerId(this.customersFacade.find(this.customer.getCustomerId()));
         this.ordersFacade.create(order);
@@ -66,8 +88,8 @@ public class OrderManagedBean implements Serializable {
         this.ordersFacade.edit(this.order);
         return "b_order";
     }
-    
-    public void delete(Orders order){
+
+    public void delete(Orders order) {
         this.ordersFacade.remove(order);
     }
 
@@ -91,6 +113,5 @@ public class OrderManagedBean implements Serializable {
     public Orders getOrder(Integer id) {
         return this.ordersFacade.find(id);
     }
-
 
 }

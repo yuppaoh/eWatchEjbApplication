@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -36,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Customers.findByPhoneNo", query = "SELECT c FROM Customers c WHERE c.phoneNo = :phoneNo")
     , @NamedQuery(name = "Customers.findByCustomerStatus", query = "SELECT c FROM Customers c WHERE c.customerStatus = :customerStatus")})
 public class Customers implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
+    private List<Comments> commentsList;
 
     @OneToMany(mappedBy = "customerId")
     private List<Orders> ordersList;
@@ -160,6 +164,15 @@ public class Customers implements Serializable {
 
     public void setOrdersList(List<Orders> ordersList) {
         this.ordersList = ordersList;
+    }
+
+    @XmlTransient
+    public List<Comments> getCommentsList() {
+        return commentsList;
+    }
+
+    public void setCommentsList(List<Comments> commentsList) {
+        this.commentsList = commentsList;
     }
     
 }

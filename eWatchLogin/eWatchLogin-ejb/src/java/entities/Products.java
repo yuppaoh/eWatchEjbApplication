@@ -43,6 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Products implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId")
+    private List<Comments> commentsList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId")
     private List<Orderdetails> orderdetailsList;
 
     private static final long serialVersionUID = 1L;
@@ -176,6 +179,15 @@ public class Products implements Serializable {
 
     public void setOrderdetailsList(List<Orderdetails> orderdetailsList) {
         this.orderdetailsList = orderdetailsList;
+    }
+
+    @XmlTransient
+    public List<Comments> getCommentsList() {
+        return commentsList;
+    }
+
+    public void setCommentsList(List<Comments> commentsList) {
+        this.commentsList = commentsList;
     }
     
 }

@@ -20,8 +20,9 @@ import javax.inject.Named;
 import javax.ejb.EJB;
 import entities.Products;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -66,8 +67,6 @@ public class ProductManagedBean implements Serializable {
 
 // order product
     private Customers customer = new Customers();
-
-    ;
 
     public ProductManagedBean() {
 // backend add new product        
@@ -172,55 +171,51 @@ public class ProductManagedBean implements Serializable {
         return "home";      // redirect to product order page
     }
 
-    public String orderProductCreate(int quantity) {
-        System.out.println("====================================");
-        System.out.println("quantity: " +quantity);
-        
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-        Customers cust = new Customers();
-        Products pp = new Products();
+    public String orderProductCreate() {
 
         try {
+            float m = muti();
+            System.out.println("====================================");
+            System.out.println("total: " + m);
+            System.out.println("quantity: " + this.orderdetail.getQuantity());
+
+            Date date = new Date(System.currentTimeMillis());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            FacesContext fc = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+            Customers cust = new Customers();
+            Products pp = new Products();
+
+//        try {
             if (session.getAttribute("session_product") != null) {
                 cust = this.customersFacade.find(session.getAttribute("customerId"));
                 this.order.setCustomerId(this.customersFacade.find(cust.getCustomerId()));
+                this.order.setOrderDate(date);
+                this.order.setOrderStatus("Pending...");
                 this.ordersFacade.create(order);
 
                 pp = (Products) session.getAttribute("session_product");
                 this.orderdetail.setOrderId(this.ordersFacade.find(this.order.getOrderId()));
                 this.orderdetail.setProductId(pp);
-                this.orderdetail.setQuantity(1);
+//                this.orderdetail.setQuantity(1);
                 this.orderdetail.setUnitPrice(pp.getUnitPrice());
                 this.orderdetailsFacade.create(orderdetail);
+
+                RequestContext.getCurrentInstance().execute("alert('You have ordered product successfully! please waitting to receive your product!');");
             } else {
                 RequestContext.getCurrentInstance().execute("alert('You should choose product before!');");
             }
 
-
-//==========================================
-//        Orders order = new Orders();
-            //order = (Orders) session.getAttribute("order_session");
-//        Orderdetails orderdetail = new Orderdetails();
-            //orderdetail = (Orderdetails) session.getAttribute("orderdetail_session");
-//        this.ordersFacade.create(order);
-            //this.orderdetailsFacade.create(orderdetail);
-//==========================================
-
-
             System.out.println("========================================");
             System.out.println("add data to order and orderdetail ok");
 
+//        } catch (Exception e) {
+//            System.out.println("========================================");
+//           System.out.println("Exception in orderProductCreate(): " + e.getMessage());
+//      }
         } catch (Exception e) {
-            System.out.println("========================================");
-           System.out.println("Exception in orderProductCreate(): " + e.getMessage());
-      }
-        
-//==========================================
-//        this.ordersFacade.create((Orders) session.getAttribute("order_session"));
-//        this.orderdetailsFacade.create((Orderdetails) session.getAttribute("orderdetail_session"));
-//==========================================
-
+            RequestContext.getCurrentInstance().execute("alert('Please input quantiy !!!');");
+        }
         return "product-order";
     }
 
@@ -264,7 +259,7 @@ public class ProductManagedBean implements Serializable {
     }
 
     public String listToProductDetail(int id) {
-        System.out.println("id: " +id);
+        System.out.println("id: " + id);
         this.product = this.productsFacade.find(id);
         return "product-detail";
     }
@@ -340,6 +335,25 @@ public class ProductManagedBean implements Serializable {
 //    }
 // ==========================================    
 // order product
+    private int value1;
+    private int value2;
+
+    public int getValue1() {
+        return value1;
+    }
+
+    public void setValue1(int value1) {
+        this.value1 = value1;
+    }
+
+    public int getValue2() {
+        return value2;
+    }
+
+    public void setValue2(int value2) {
+        this.value2 = value2;
+    }
+
     public Orderdetails getOrderdetail() {
         return orderdetail;
     }
@@ -358,6 +372,30 @@ public class ProductManagedBean implements Serializable {
 
     public Orderdetails getOrderdetail(Integer id) {
         return this.orderdetailsFacade.find(id);
+    }
+
+    private int quantity = 0;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = this.product.getQuantity();
+    }
+    private float total = 0;
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public float muti() {
+        this.total = this.product.getUnitPrice() * this.orderdetail.getQuantity();
+        return this.total;
     }
 
 }

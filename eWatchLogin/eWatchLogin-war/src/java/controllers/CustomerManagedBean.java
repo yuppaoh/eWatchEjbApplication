@@ -105,12 +105,7 @@ public class CustomerManagedBean implements Serializable {
     public String register() {
         String page = "login";
         try {
-            if (customersFacade.isUsernameExist(customer.getCustomerId())) {
-                System.out.println("======================CustomerId is exist");
-
-                RequestContext.getCurrentInstance().execute("alert('Username is existed, please try another username !!!');");
-                page = "login";
-            } else if (customersFacade.validUsernameLength(customer.getCustomerId())) {
+            if (customersFacade.validUsernameLength(customer.getCustomerId())) {
                 System.out.println("i======================Length of CustomerId is valid");
 
                 page = "login";
@@ -122,6 +117,11 @@ public class CustomerManagedBean implements Serializable {
                 System.out.println("i======================Comfirm Password is valid");
 
                 RequestContext.getCurrentInstance().execute("alert('Confirm password is not match!!!');");
+                page = "login";
+            } else if(customersFacade.isUsernameExist(customer.getCustomerId())) {
+                System.out.println("======================CustomerId is exist");
+
+                RequestContext.getCurrentInstance().execute("alert('Username is existed, please try another username !!!');");
                 page = "login";
             } else {
                 System.out.println("i======================Account will be created for Customer");

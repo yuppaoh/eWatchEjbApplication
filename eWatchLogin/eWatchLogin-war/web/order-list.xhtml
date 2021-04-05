@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
         <script src="./resources/js/jquery.min.js"></script>
         <script src="./resources/js/bootstrap.min.js"></script>
+        <link href="resources/css/style_ew.css" rel="stylesheet" type="text/css"/> <!--include footer-->
+        <link href="resources/css/style_ew2.css" rel="stylesheet" type="text/css"/> <!--include footer-->
     </h:head>
     <h:body>
 
@@ -19,146 +21,93 @@
             </ui:insert>
         </div>
 
-        <div class="container">
-            <c:forEach items="#{orderManagedBean.findAll()}" var="item">
-                <h:outputText value="Order No: #{item.orderId}"/><br/>
-                <table border="1" cellpadding="1" cellspacing="1">
-                    <tr>
-                        <c:forEach items="#{orderdetailController.findAll()}" var="detail">
-                            <c:if test="#{detail.orderId.orderId == item.orderId}">
-                                <td>
-                                    #{detail.productId.productName}
-                                </td>
-                                <td>
-                                    #{detail.quantity}
-                                </td>
-                                <td>
-                                    #{detail.unitPrice}
-                                </td>
-                                <td>
-                                    #{detail.unitPrice * detail.quantity}
-                                </td>
-                            </c:if>
-                        </c:forEach>
-                    </tr>
-                </table>
 
-            </c:forEach>
-        </div>
 
         <div class="container">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
-                        <h:form>
-                            <h3><h:outputText value="Order List"/></h3>
-                            <h:dataTable value="#{orderManagedBean.findAll()}" var="item">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="OrderId"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.orderId}"/>
-                                </h:column>
-<!--                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="OrderDate"/>
-                                    </f:facet>
-                                    <h:outputText value="{item.orderDate}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="OrderStatus"/>
-                                    </f:facet>
-                                    <h:outputText value="{item.orderStatus}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="DeliveryDate"/>
-                                    </f:facet>
-                                    <h:outputText value="{item.deliveryDate}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Description"/>
-                                    </f:facet>
-                                    <h:outputText value="{item.description}"/>
-                                </h:column>-->
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="CustomerId"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.customerId.customerName}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Action"/>
-                                    </f:facet>
-                                    <div style="padding: 5px 10px;">
-                                        <h:commandButton value="Cancel" action="#{orderManagedBean.delete(item)}" class="btn btn-block btn-sm btn-danger"/>
-                                    </div>
-                                </h:column>
-                            </h:dataTable>
-                        </h:form>
-                    </div>
                     <div class="col-md-6">
                         <h:form>
-                            <h3><h:outputText value="Orderdetail List"/></h3>
-                            <h:dataTable value="#{orderdetailController.findAll()}" var="item">
+                            <h3><h:outputText value="CustomerID: #{customerManagedBean.customer.customerId}"/></h3>
+                            <h4><h:outputText value="Orders List"/></h4>
+                            <h:dataTable value="#{orderManagedBean.findByCustomerId()}" var="item">
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Id"/>
+                                        <h:outputText value="Order No."/>
                                     </f:facet>
-                                    <h:outputText value="#{item.id}"/>
+                                    <h:commandButton value="#{item.orderId}" action="#{orderManagedBean.showDetailLocal(item)}" class="btn btn-block btn-sm btn-primary" style="margin-top: 3px;"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Quantity"/>
+                                        <h:outputText value="Date of order"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.quantity}"/>
+                                    <h:outputText value="#{item.orderDate}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="UnitPrice"/>
+                                        <h:outputText value="Status"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.unitPrice}"/>
+                                    <h:outputText value="#{item.orderStatus}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="OrderId"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.orderId.orderId}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="ProductId"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.productId.productId}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="ProductName"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.productId.productName}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Action"/>
+                                        <!--<h:outputText value="Action"/>-->
                                     </f:facet>
                                     <div style="padding: 5px 10px;">
-                                        <h:commandButton value="Delete" action="#{orderdetailController.delete(item)}" class="btn btn-block btn-sm btn-danger"/>
+                                        <h:commandButton value="Cancel" action="{orderManagedBean.delete(item)}" class="btn btn-block btn-sm btn-danger"/>
+                                        <!--<h:commandButton value="Detail" action="{orderManagedBean.showDetail(item)}" class="btn btn-block btn-sm btn-danger"/>-->
+
                                     </div>
                                 </h:column>
                             </h:dataTable>
                         </h:form>
                     </div>
+
+                    <!--orderdetail-->
+                    <div class="col-md-6">
+                        <br/><br/><br/><br/>
+                        <c:if test="#{orderdetailController.findByOrderId()!=null}">
+                            <h:form>
+                                <h4><h:outputText value="Detail of orders"/></h4>
+                                <h:dataTable value="#{orderdetailController.findByOrderId()}" var="item">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Product name"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.productId.productName}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Quantity"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.quantity}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="UnitPrice"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.unitPrice}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Amout"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.quantity * item.unitPrice}"/>
+                                    </h:column>
+                                    
+                                    
+                                </h:dataTable>
+                            </h:form>
+                        </c:if>
+                    </div>
+
                 </div>
             </div>
 
         </div>
+
         <!--Footer-->
         <br/><br/>
         <div class="container-fluid">
